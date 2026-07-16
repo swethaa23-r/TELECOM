@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience the fastest 5G network with Stackly Telecom. Explore unlimited prepaid, postpaid, broadband, and enterprise solutions.">
+    <title>Stackly Telecom | Premium 5G & Broadband</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css?v=1.7">
+    <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+
+    <!-- Premium Preloader -->
+    <div class="premium-preloader bg-white" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; display: flex; align-items: center; justify-content: center;">
+        <div class="preloader-content d-flex align-items-center justify-content-center w-100 h-100 position-relative">
+            <!-- Animated Container (Centered) -->
+            <div class="preloader-logo-container position-relative d-flex align-items-center justify-content-center" style="width: 300px; height: 200px;">
+                <!-- Expanding Rings (Signal Waves) -->
+                <div class="signal-ring ring-1 position-absolute rounded-circle" style="border: 2px solid #E30613; width: 20px; height: 20px; opacity: 0;"></div>
+                <div class="signal-ring ring-2 position-absolute rounded-circle" style="border: 2px solid #E30613; width: 20px; height: 20px; opacity: 0;"></div>
+                <div class="signal-ring ring-3 position-absolute rounded-circle" style="border: 2px solid #E30613; width: 20px; height: 20px; opacity: 0;"></div>
+                
+                <!-- Center Red Dot -->
+                <div class="preloader-dot rounded-circle position-absolute" style="background-color: #E30613; width: 20px; height: 20px;"></div>
+                
+                <!-- Typography (Absolutely Centered) -->
+                <div class="preloader-text text-center overflow-hidden position-absolute w-100" style="z-index: 10;">
+                    <h2 class="fw-bold text-dark-navy mb-2 preloader-title" style="opacity: 0; transform: translateY(30px); letter-spacing: 2px; font-size: 1.8rem;">STACKLY TELECOM</h2>
+                    <p class="text-secondary preloader-subtitle mb-0" style="opacity: 0; letter-spacing: 1px;">Every Signal Starts Here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-xl navbar-custom">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="redlogo.webp" alt="Stackly Logo" height="30" class="me-2 d-inline-block align-text-top"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item"><a class="nav-link nav-link-custom active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="recharge.html">Recharge</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="plans.html">Plans</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="broadband.html">Broadband</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="business.html">Business</a></li>
+                          <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
+                          <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="support.html">Support</a></li>
+                        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                            <a href="login.html" class="btn btn-outline-custom me-2 ripple">Login</a>
+                            <a href="signup.html" class="btn btn-primary-custom ripple">Sign Up</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+                <section class="hero-section position-relative overflow-hidden bg-light-gray" id="particles-js" style="padding-top: 140px; padding-bottom: 80px;">
+            <div class="container position-relative z-1 mt-lg-5 mt-2">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill glass border-danger mb-4 hero-title">
+                            <span class="badge bg-danger rounded-pill pulse-primary">New</span>
+                            <span class="fw-semibold small">Experience True 5G Ultra Wideband</span>
+                        </div>
+                        <h1 class="display-3 fw-bold text-dark-navy mb-4 hero-title" style="line-height: 1.2;">
+                            Beyond Speed, <br>
+                            <span class="text-primary-custom">Beyond Limits.</span>
+                        </h1>
+                        <p class="lead text-secondary mb-5 hero-subtitle">
+                            Join India's fastest growing 5G network. Seamless connectivity, unlimited entertainment, and crystal clear calls.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3 hero-btns">
+                            <div class="float-btn-wrapper">
+                                <a href="recharge.html" class="btn btn-hero-primary rounded-pill px-5 py-3 position-relative overflow-hidden d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-bolt me-2 fs-5"></i> <span class="fw-bold">Recharge Now</span>
+                                </a>
+                            </div>
+                            <div class="float-btn-wrapper float-delay">
+                                <a href="plans.html" class="btn btn-hero-secondary rounded-pill px-5 py-3 position-relative overflow-hidden glass d-flex align-items-center justify-content-center">
+                                    <span class="fw-bold">Explore Plans</span> <i class="fa-solid fa-arrow-right ms-2 btn-icon-arrow fs-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-5 d-flex gap-4 hero-subtitle">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="h2 fw-bold text-dark-navy mb-0"><span class="counter-val" data-target="350">0</span>M+</div>
+                                <div class="small text-secondary lh-sm">Happy<br>Users</div>
+                            </div>
+                            <div class="vr"></div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="h2 fw-bold text-primary-custom mb-0"><span class="counter-val" data-target="99.9">0</span>%</div>
+                                <div class="small text-secondary lh-sm">Network<br>Uptime</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 position-relative hero-mockup-wrapper">
+                        <!-- Perfect circle background behind phone -->
+                        <div class="position-absolute top-50 start-50 translate-middle rounded-circle float-anim-delay-2 d-none d-md-block" style="width: 420px; height: 420px; background-color: rgba(227, 6, 19, 0.15); pointer-events: none; z-index: 0;"></div>
+                        
+                        <!-- Premium phone mockup placeholder using CSS -->
+                        <div class="mx-auto position-relative float-anim" style="width: 240px; height: 500px; background: var(--dark-gradient); border-radius: 40px; border: 8px solid #333; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); overflow: hidden;">
+                            <!-- Screen Content -->
+                            <div class="w-100 h-100 bg-white position-relative">
+                                <!-- Notch -->
+                                <div class="position-absolute top-0 start-50 translate-middle-x bg-dark" style="width: 120px; height: 25px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 10;"></div>
+                                <!-- Content inside phone -->
+                                <div class="pt-5 px-3">
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="fw-bold fs-5 text-dark-navy">Stackly App</div>
+                                        <i class="fa-solid fa-user-circle fs-3 text-secondary"></i>
+                                    </div>
+                                    <div class="bg-animated-gradient rounded-4 p-3 text-white mb-3 shadow-lg">
+                                        <div class="small opacity-75 mb-1">Current Plan</div>
+                                        <div class="fs-4 fw-bold mb-2">₹599 <span class="fs-6 fw-normal">/ 28 Days</span></div>
+                                        <div class="d-flex justify-content-between small">
+                                            <span><i class="fa-solid fa-database"></i> 3GB/Day</span>
+                                            <span><i class="fa-solid fa-phone"></i> Unlimited</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row g-2">
+                                        <div class="col-6">
+                                            <div class="bg-light p-3 rounded-4 text-center border">
+                                                <i class="fa-solid fa-wifi text-primary-custom fs-3 mb-2"></i>
+                                                <div class="small fw-semibold">5G Data</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="bg-light p-3 rounded-4 text-center border">
+                                                <i class="fa-solid fa-tv text-primary-custom fs-3 mb-2"></i>
+                                                <div class="small fw-semibold">OTT Apps</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating glassmorphism cards -->
+                        <div class="position-absolute top-50 start-0 translate-middle-y glass p-3 rounded-4 float-anim-delay-1 d-none d-md-block tilt-card">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                    <i class="fa-solid fa-rocket fs-4"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">1.2 Gbps</div>
+                                    <div class="small text-muted">Peak 5G Speed</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="position-absolute bottom-0 end-0 glass p-3 rounded-4 float-anim-delay-2 d-none d-md-block tilt-card" style="margin-bottom: 80px; margin-right: -20px;">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                    <i class="fa-solid fa-shield-halved fs-4"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Secure</div>
+                                    <div class="small text-muted">Safe Network</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Popular Recharge Plans -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="section-title">Trending 5G Plans</h2>
+                    <p class="section-subtitle">Choose the perfect plan that fits your lifestyle. Truly Unlimited.</p>
+                </div>
+                
+                <div class="row g-4 justify-content-center">
+                    <!-- Plan 1 -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="premium-card text-center d-flex flex-column">
+                            <div class="position-absolute top-0 end-0 bg-light-gray px-3 py-1 rounded-bottom-start shadow-sm small fw-semibold text-secondary">
+                                Popular
+                            </div>
+                            <div class="text-muted fw-semibold mb-2 text-uppercase tracking-wider">True 5G Unlimited</div>
+                            <h3 class="display-5 fw-bold text-dark-navy mb-4">₹299</h3>
+                            
+                            <ul class="list-unstyled text-start mb-4 flex-grow-1">
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-primary-custom fs-5"></i>
+                                    <span><strong>1.5 GB/Day</strong> High Speed Data</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-primary-custom fs-5"></i>
+                                    <span><strong>Unlimited</strong> Voice Calls</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-primary-custom fs-5"></i>
+                                    <span><strong>100 SMS/Day</strong> Local & STD</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-primary-custom fs-5"></i>
+                                    <span><strong>28 Days</strong> Validity</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="d-grid gap-2 mt-auto">
+                                <a href="recharge.html" class="btn btn-primary-custom ripple">Recharge</a>
+                                <a href="plans.html" class="btn btn-outline-custom">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plan 2 (Highlighted) -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="premium-card text-center text-white bg-animated-gradient border-0 d-flex flex-column transform-scale" style="transform: scale(1.05); z-index: 10;">
+                            <div class="position-absolute top-0 start-50 translate-middle-x bg-white text-primary-custom px-4 py-1 rounded-bottom shadow-sm fw-bold">
+                                Bestseller
+                            </div>
+                            <div class="text-white-50 fw-semibold mb-2 mt-3 text-uppercase tracking-wider">Entertainment Pack</div>
+                            <h3 class="display-5 fw-bold mb-4">₹599</h3>
+                            
+                            <ul class="list-unstyled text-start mb-4 flex-grow-1">
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-white fs-5"></i>
+                                    <span><strong>3 GB/Day</strong> High Speed Data</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-white fs-5"></i>
+                                    <span><strong>Unlimited</strong> Voice Calls</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-white fs-5"></i>
+                                    <span><strong>Free OTT</strong> (Netflix & Prime)</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-white fs-5"></i>
+                                    <span><strong>28 Days</strong> Validity</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="d-grid gap-2 mt-auto">
+                                <a href="recharge.html" class="btn btn-light rounded-pill fw-bold text-primary-custom py-2 shadow ripple">Recharge</a>
+                                <a href="plans.html" class="btn btn-outline-light-custom">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plan 3 -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="premium-card text-center d-flex flex-column">
+                            <div class="text-muted fw-semibold mb-2 text-uppercase tracking-wider">Annual Value</div>
+                            <h3 class="display-5 fw-bold text-dark-navy mb-4">₹2999</h3>
+                            
+                            <ul class="list-unstyled text-start mb-4 flex-grow-1">
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-primary-custom fs-5"></i>
+                                    <span><strong>2.5 GB/Day</strong> High Speed Data</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-primary-custom fs-5"></i>
+                                    <span><strong>Unlimited</strong> Voice Calls</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-primary-custom fs-5"></i>
+                                    <span><strong>Hotstar Mobile</strong> for 1 Year</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-check-circle text-primary-custom fs-5"></i>
+                                    <span><strong>365 Days</strong> Validity</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="d-grid gap-2 mt-auto">
+                                <a href="recharge.html" class="btn btn-primary-custom ripple">Recharge</a>
+                                <a href="plans.html" class="btn btn-outline-custom">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5" data-aos="fade-up">
+                    <a href="plans.html" class="text-decoration-none fw-bold text-primary-custom d-inline-flex align-items-center gap-2 link-hover">
+                        View All Prepaid & Postpaid Plans <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Why Choose Us -->
+        <section class="section-padding bg-light-gray position-relative">
+            <div class="container">
+                <div class="row align-items-center mb-5">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <h2 class="section-title">Why India Chooses Stackly</h2>
+                        <p class="section-subtitle mb-0">Experience the future of connectivity with our cutting-edge network infrastructure and customer-centric approach.</p>
+                    </div>
+                    <div class="col-lg-6 text-lg-end mt-4 mt-lg-0" data-aos="fade-left">
+                        <a href="about.html" class="btn btn-outline-custom">Learn More About Us</a>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="premium-card p-4 text-center hover-lift tilt-card">
+                            <div class="icon-box bg-white text-primary-custom shadow-sm rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-fighter-jet fs-3"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Fastest 5G</h4>
+                            <p class="text-muted small mb-0">Experience blazing fast internet speeds up to 1Gbps on our True 5G network.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="premium-card p-4 text-center hover-lift tilt-card">
+                            <div class="icon-box bg-white text-primary-custom shadow-sm rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-tower-broadcast fs-3"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Nationwide Coverage</h4>
+                            <p class="text-muted small mb-0">Stay connected everywhere with our expansive network covering 99% of the country.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="premium-card p-4 text-center hover-lift tilt-card">
+                            <div class="icon-box bg-white text-primary-custom shadow-sm rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-phone-volume fs-3"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Unlimited Calls</h4>
+                            <p class="text-muted small mb-0">Crystal clear voice over LTE (VoLTE) and Wi-Fi calling with no FUP limits.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="premium-card p-4 text-center hover-lift tilt-card">
+                            <div class="icon-box bg-white text-primary-custom shadow-sm rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-film fs-3"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">OTT Benefits</h4>
+                            <p class="text-muted small mb-0">Free subscriptions to premium streaming platforms like Netflix, Prime & Hotstar.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="premium-card p-4 text-center hover-lift tilt-card">
+                            <div class="icon-box bg-white text-primary-custom shadow-sm rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-shield-check fs-3"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Secure Payments</h4>
+                            <p class="text-muted small mb-0">Bank-grade security for all your recharges and bill payments on our app.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="600">
+                        <div class="premium-card p-4 text-center hover-lift tilt-card">
+                            <div class="icon-box bg-white text-primary-custom shadow-sm rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-headset fs-3"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">24Ã—7 Support</h4>
+                            <p class="text-muted small mb-0">Dedicated customer support team available round the clock to assist you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Broadband Services -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="row align-items-center mb-5">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <span class="badge bg-danger rounded-pill px-3 py-2 mb-3 shadow-sm">Stackly Fiber</span>
+                        <h2 class="section-title">Ultra-Fast Broadband</h2>
+                        <p class="section-subtitle mb-0">Transform your home into a smart home with our Gigabit fiber connections. Free router and installation included.</p>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="premium-card position-relative overflow-hidden group">
+                            <div class="bg-primary-custom text-white position-absolute top-0 end-0 px-3 py-1 rounded-bottom-start shadow">Basic</div>
+                            <div class="mb-4">
+                                <h3 class="fw-bold mb-1">30 Mbps</h3>
+                                <p class="text-muted small">Unlimited Data @ ₹399/mo</p>
+                            </div>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Free Wi-Fi Router</li>
+                                <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Zero Installation Cost</li>
+                                <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Unlimited Local/STD Calls</li>
+                            </ul>
+                            <a href="broadband.html" class="btn btn-outline-custom w-100">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="premium-card bg-animated-gradient text-white position-relative overflow-hidden transform-scale" style="transform: scale(1.05); z-index: 10;">
+                            <div class="bg-white text-primary-custom position-absolute top-0 end-0 px-3 py-1 rounded-bottom-start shadow fw-bold">Popular</div>
+                            <div class="mb-4">
+                                <h3 class="fw-bold mb-1">100 Mbps</h3>
+                                <p class="text-white-50 small">Unlimited Data @ ₹699/mo</p>
+                            </div>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fa-solid fa-check text-white me-2"></i> Free Dual-Band Router</li>
+                                <li class="mb-2"><i class="fa-solid fa-check text-white me-2"></i> Zero Installation Cost</li>
+                                <li class="mb-2"><i class="fa-solid fa-check text-white me-2"></i> 5 OTT Apps Included</li>
+                            </ul>
+                            <a href="broadband.html" class="btn btn-light text-primary-custom w-100 fw-bold shadow">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="premium-card position-relative overflow-hidden group">
+                            <div class="bg-dark text-white position-absolute top-0 end-0 px-3 py-1 rounded-bottom-start shadow">Ultra</div>
+                            <div class="mb-4">
+                                <h3 class="fw-bold mb-1">300 Mbps</h3>
+                                <p class="text-muted small">Unlimited Data @ ₹999/mo</p>
+                            </div>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Free Wi-Fi 6 Router</li>
+                                <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Zero Installation Cost</li>
+                                <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 14 Premium OTT Apps</li>
+                            </ul>
+                            <a href="broadband.html" class="btn btn-outline-custom w-100">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. OTT Entertainment -->
+        <section class="section-padding bg-dark-navy text-white position-relative overflow-hidden">
+            <!-- Background element -->
+            <div class="position-absolute top-0 end-0 opacity-10" style="width: 50%; height: 100%; background: radial-gradient(circle, var(--primary) 0%, transparent 70%);"></div>
+            
+            <div class="container position-relative z-1">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-5 fw-bold mb-3">Your World of Entertainment</h2>
+                    <p class="text-white-50 lead mx-auto" style="max-width: 600px;">Get complimentary subscriptions to your favorite streaming apps with our premium plans.</p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="glass-dark p-4 rounded-4 text-center tilt-card">
+                            <i class="fa-solid fa-film fs-1 text-danger mb-3"></i>
+                            <h5 class="fw-bold m-0">Movies</h5>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="glass-dark p-4 rounded-4 text-center tilt-card">
+                            <i class="fa-solid fa-tv fs-1 text-info mb-3"></i>
+                            <h5 class="fw-bold m-0">TV Shows</h5>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="glass-dark p-4 rounded-4 text-center tilt-card">
+                            <i class="fa-solid fa-baseball-bat-ball fs-1 text-success mb-3"></i>
+                            <h5 class="fw-bold m-0">Live Sports</h5>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="glass-dark p-4 rounded-4 text-center tilt-card">
+                            <i class="fa-solid fa-music fs-1 text-warning mb-3"></i>
+                            <h5 class="fw-bold m-0">Music</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animated Marquee for Logos -->
+                <div class="mt-5 overflow-hidden position-relative" style="height: 80px;">
+                    <div class="position-absolute w-100 h-100 d-flex align-items-center scrolling-wrapper gap-5 px-4 text-white-50 fs-3">
+                        <i class="fa-brands fa-youtube"></i> <span class="fw-bold">Netflix</span>
+                        <i class="fa-brands fa-amazon"></i> <span class="fw-bold">Prime Video</span>
+                        <i class="fa-brands fa-spotify"></i> <span class="fw-bold">Hotstar</span>
+                        <i class="fa-solid fa-play"></i> <span class="fw-bold">SonyLIV</span>
+                        <i class="fa-brands fa-youtube"></i> <span class="fw-bold">Netflix</span>
+                        <i class="fa-brands fa-amazon"></i> <span class="fw-bold">Prime Video</span>
+                        <i class="fa-brands fa-spotify"></i> <span class="fw-bold">Hotstar</span>
+                        <i class="fa-solid fa-play"></i> <span class="fw-bold">SonyLIV</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Network Coverage -->
+        <section class="section-padding bg-light-gray">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+                        <h2 class="section-title">Largest 5G Coverage</h2>
+                        <p class="section-subtitle">We are expanding our True 5G network across India. Search your city to check 5G availability.</p>
+                        
+                        <div class="premium-card p-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-location-dot text-primary-custom"></i></span>
+                                <input type="text" class="form-control border-start-0 ps-0 focus-ring" placeholder="Enter your City or Pincode">
+                                <button class="btn btn-primary-custom rounded-end ripple px-4" onclick="window.location.href='404.html'">Check</button>
+                            </div>
+                            
+                            <div class="d-flex align-items-center gap-3 mt-4">
+                                <div class="bg-success rounded-circle p-1 pulse-primary" style="width:12px; height:12px;"></div>
+                                <span class="fw-semibold">Live in 5,000+ Cities</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 position-relative" data-aos="zoom-in">
+                        <!-- Abstract Map Representation -->
+                        <div class="bg-white rounded-5 shadow-lg p-5 text-center position-relative overflow-hidden" style="min-height: 400px; border: 1px solid rgba(0,0,0,0.05);">
+                            <!-- Radar Animation -->
+                            <div class="position-absolute top-50 start-50 translate-middle rounded-circle border border-danger opacity-25" style="width: 200px; height: 200px; animation: pulse-signal 3s infinite;"></div>
+                            <div class="position-absolute top-50 start-50 translate-middle rounded-circle border border-danger opacity-25" style="width: 300px; height: 300px; animation: pulse-signal 3s infinite 1s;"></div>
+                            <div class="position-absolute top-50 start-50 translate-middle rounded-circle border border-danger opacity-25" style="width: 400px; height: 400px; animation: pulse-signal 3s infinite 2s;"></div>
+                            
+                            <i class="fa-solid fa-map-location-dot text-primary-custom opacity-10 position-absolute top-50 start-50 translate-middle" style="font-size: 15rem;"></i>
+                            
+                            <!-- Pins -->
+                            <div class="position-absolute float-anim text-danger" style="top: 30%; left: 30%;"><i class="fa-solid fa-location-dot fs-3"></i></div>
+                            <div class="position-absolute float-anim-delay-1 text-danger" style="top: 60%; left: 60%;"><i class="fa-solid fa-location-dot fs-3"></i></div>
+                            <div class="position-absolute float-anim-delay-2 text-danger" style="top: 40%; left: 70%;"><i class="fa-solid fa-location-dot fs-3"></i></div>
+                            <div class="position-absolute float-anim text-danger" style="top: 70%; left: 40%;"><i class="fa-solid fa-location-dot fs-3"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Business Solutions -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Enterprise & Business</h2>
+                    <p class="section-subtitle">Scalable, secure, and reliable connectivity solutions for businesses of all sizes.</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="premium-card p-4 hover-lift border-top border-primary border-4">
+                            <i class="fa-solid fa-building fs-2 text-primary-custom mb-4"></i>
+                            <h4 class="fw-bold mb-3">Enterprise Internet</h4>
+                            <p class="text-muted small">Dedicated leased line internet with symmetric upload and download speeds, backed by enterprise SLA.</p>
+                            <a href="business.html" class="text-primary-custom fw-bold text-decoration-none">Explore <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="premium-card p-4 hover-lift border-top border-dark border-4">
+                            <i class="fa-solid fa-microchip fs-2 text-dark-navy mb-4"></i>
+                            <h4 class="fw-bold mb-3">IoT Solutions</h4>
+                            <p class="text-muted small">Connect and manage your devices seamlessly with our NB-IoT and LTE-M networks designed for scale.</p>
+                            <a href="business.html" class="text-dark-navy fw-bold text-decoration-none">Explore <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="premium-card p-4 hover-lift border-top border-danger border-4">
+                            <i class="fa-solid fa-cloud fs-2 text-danger mb-4"></i>
+                            <h4 class="fw-bold mb-3">Cloud Connectivity</h4>
+                            <p class="text-muted small">Secure, private, and high-performance connections directly to major cloud service providers.</p>
+                            <a href="business.html" class="text-danger fw-bold text-decoration-none">Explore <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Customer Reviews -->
+        <section class="section-padding bg-light-gray overflow-hidden">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Loved by Millions</h2>
+                    <p class="section-subtitle">Don't just take our word for it. Here's what our customers have to say.</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                        <div class="premium-card p-4 tilt-card">
+                            <div class="d-flex text-warning mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="fst-italic mb-4">"The 5G speed is absolutely mind-blowing. I can download huge files in seconds. The network coverage even indoors is phenomenal."</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-secondary rounded-circle d-flex justify-content-center align-items-center text-white fw-bold" style="width: 45px; height: 45px;">RK</div>
+                                <div>
+                                    <h6 class="fw-bold m-0">Rahul Kumar</h6>
+                                    <small class="text-muted">Mumbai</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="premium-card p-4 tilt-card">
+                            <div class="d-flex text-warning mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="fst-italic mb-4">"Switched to Stackly Fiber last month. The installation was quick, and the dual-band router provides excellent range. Highly recommended!"</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-primary-custom rounded-circle d-flex justify-content-center align-items-center text-white fw-bold" style="width: 45px; height: 45px;">PS</div>
+                                <div>
+                                    <h6 class="fw-bold m-0">Priya Sharma</h6>
+                                    <small class="text-muted">Delhi</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-left" data-aos-delay="300">
+                        <div class="premium-card p-4 tilt-card">
+                            <div class="d-flex text-warning mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <p class="fst-italic mb-4">"The OTT bundle with the ₹599 plan is a steal. I don't need to pay separately for Netflix anymore. Customer service is also prompt."</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-dark rounded-circle d-flex justify-content-center align-items-center text-white fw-bold" style="width: 45px; height: 45px;">AK</div>
+                                <div>
+                                    <h6 class="fw-bold m-0">Amit Khanna</h6>
+                                    <small class="text-muted">Bangalore</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Latest Offers & 10. Download App combined -->
+        <section class="section-padding bg-white position-relative">
+            <div class="container">
+                <div class="bg-animated-gradient rounded-5 p-5 text-white shadow-lg position-relative overflow-hidden" data-aos="zoom-in">
+                    <!-- Glass circles decoration -->
+                    <div class="position-absolute top-0 start-0 translate-middle rounded-circle bg-white opacity-10" style="width: 300px; height: 300px;"></div>
+                    <div class="position-absolute bottom-0 end-0 translate-middle-y rounded-circle bg-white opacity-10" style="width: 200px; height: 200px; margin-right: -100px;"></div>
+                    
+                    <div class="row align-items-center position-relative z-1">
+                        <div class="col-lg-7 mb-4 mb-lg-0">
+                            <span class="badge bg-white text-primary-custom rounded-pill px-3 py-2 mb-3 shadow-sm">Limited Time Offer</span>
+                            <h2 class="display-4 fw-bold mb-4">Get 20% Cashback on First Recharge!</h2>
+                            <p class="lead text-white-50 mb-5">Download the Stackly App to unlock exclusive festival offers, manage your account, and get priority support.</p>
+                            
+                            <div class="d-flex flex-wrap gap-3">
+                                <a href="404.html" class="btn btn-dark rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 hover-lift border border-light border-opacity-25 shadow">
+                                    <i class="fa-brands fa-apple fs-3"></i>
+                                    <div class="text-start">
+                                        <div class="small lh-1" style="font-size: 10px;">Download on the</div>
+                                        <div class="fw-bold lh-1">App Store</div>
+                                    </div>
+                                </a>
+                                <a href="404.html" class="btn btn-dark rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 hover-lift border border-light border-opacity-25 shadow">
+                                    <i class="fa-brands fa-google-play fs-3"></i>
+                                    <div class="text-start">
+                                        <div class="small lh-1" style="font-size: 10px;">GET IT ON</div>
+                                        <div class="fw-bold lh-1">Google Play</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 text-center position-relative">
+                            <!-- Floating App mockups or QR Code -->
+                            <div class="glass p-4 rounded-4 d-inline-block shadow-lg tilt-card">
+                                <div class="bg-white p-2 rounded-3 mb-3 d-inline-block mx-auto">
+                                    <!-- Placeholder for QR Code using FontAwesome -->
+                                    <i class="fa-solid fa-qrcode text-dark-navy" style="font-size: 120px;"></i>
+                                </div>
+                                <h5 class="fw-bold m-0 text-dark-navy">Scan to Download</h5>
+                                <small class="text-muted fw-bold">Stackly App</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-custom pt-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <a class="navbar-brand text-white mb-4 d-inline-block" href="index.html">
+                        <img src="redlogo.webp" alt="Stackly Logo" height="30" class="me-2 d-inline-block align-text-top"></a>
+                    <p class="text-white-50 mb-4 pe-lg-5">Empowering India with next-generation digital connectivity. High-speed 5G, reliable fiber, and enterprise solutions for everyone.</p>
+                    <div class="d-flex gap-3">
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="recharge.html" class="text-white-50 text-decoration-none footer-link">Prepaid Recharge</a></li>
+                        <li><a href="plans.html" class="text-white-50 text-decoration-none footer-link">Postpaid Bill</a></li>
+                        <li><a href="broadband.html" class="text-white-50 text-decoration-none footer-link">Fiber Broadband</a></li>
+                        <li><a href="business.html" class="text-white-50 text-decoration-none footer-link">Enterprise Solutions</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none footer-link">International Roaming</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-white-50 text-decoration-none footer-link">About Us</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none footer-link">Careers</a></li>
+                        <li><a href="404.html" class="text-white-50 text-decoration-none footer-link">Investors</a></li>
+                        <li><a href="404.html" class="text-white-50 text-decoration-none footer-link">Press Center</a></li>
+                        <li><a href="404.html" class="text-white-50 text-decoration-none footer-link">Sustainability</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="footer-title">Support</h5>
+                    <div class="d-flex align-items-center gap-3 mb-3 text-white-50">
+                        <i class="fa-solid fa-headset fs-4 text-primary-custom"></i>
+                        <div>
+                            <div class="small">Call us toll-free</div>
+                            <div class="fw-bold text-white">1800-123-4567</div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 mb-4 text-white-50">
+                        <i class="fa-solid fa-envelope fs-4 text-primary-custom"></i>
+                        <div>
+                            <div class="small">Email us</div>
+                            <div class="fw-bold text-white">support@Stackly.com</div>
+                        </div>
+                    </div>
+                    <a href="support.html" class="btn btn-primary-custom btn-sm rounded-pill px-4">Help Center</a>
+                </div>
+            </div>
+            
+            <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="text-white-50 small mb-3 mb-md-0">&copy; 2026 Stackly Telecom. All rights reserved.</p>
+                <div class="d-flex gap-3 small">
+                    <a href="#" class="text-white-50 text-decoration-none hover-text-white">Privacy Policy</a>
+                    <a href="#" class="text-white-50 text-decoration-none hover-text-white">Terms of Service</a>
+                    <a href="#" class="text-white-50 text-decoration-none hover-text-white">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Libraries -->
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js?v=1.1"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

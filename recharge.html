@@ -1,0 +1,853 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge & Pay Bills | Stackly Telecom</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <link rel="stylesheet" href="assets/css/animations.min.css">
+</head>
+<body class="bg-light-gray">
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
+    <!-- Header / Navbar -->
+    <header>
+                <nav class="navbar navbar-expand-xl navbar-custom">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="recharge.html" class="nav-link nav-link-custom active">Recharge</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="plans.html">Plans</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="broadband.html">Broadband</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="business.html">Business</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="support.html">Support</a></li>
+                        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                            <a href="login.html" class="btn btn-outline-custom me-2 ripple">Login</a>
+                            <a href="signup.html" class="btn btn-primary-custom ripple">Sign Up</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Recharge Hero -->
+        <section class="py-5 bg-animated-gradient text-white position-relative overflow-hidden">
+            <div class="container position-relative z-1">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8" data-aos="fade-up">
+                        <h1 class="display-4 fw-bold mb-3">Recharge & Pay Bills</h1>
+                        <p class="lead text-white-50">Instant, secure, and rewarding. Enjoy cashback on every transaction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recharge Tabs -->
+        <section class="py-5 mt-n5 position-relative z-2">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="premium-card p-0 overflow-hidden shadow-lg border-0" data-aos="fade-up" data-aos-delay="100">
+                            <ul class="nav nav-tabs nav-justified border-0 bg-light" id="rechargeTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active fw-bold py-3 px-4 border-0 rounded-0" id="prepaid-tab" data-bs-toggle="tab" data-bs-target="#prepaid" type="button" role="tab">
+                                        <i class="fa-solid fa-mobile-screen me-2"></i>Prepaid
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link fw-bold py-3 px-4 border-0 rounded-0" id="postpaid-tab" data-bs-toggle="tab" data-bs-target="#postpaid" type="button" role="tab">
+                                        <i class="fa-solid fa-file-invoice-dollar me-2"></i>Postpaid
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link fw-bold py-3 px-4 border-0 rounded-0" id="dth-tab" data-bs-toggle="tab" data-bs-target="#dth" type="button" role="tab">
+                                        <i class="fa-solid fa-satellite-dish me-2"></i>DTH
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link fw-bold py-3 px-4 border-0 rounded-0" id="broadband-tab" data-bs-toggle="tab" data-bs-target="#broadband" type="button" role="tab">
+                                        <i class="fa-solid fa-wifi me-2"></i>Broadband
+                                    </button>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content p-4 p-md-5 bg-white" id="rechargeTabsContent">
+                                <!-- Prepaid -->
+                                <div class="tab-pane fade show active" id="prepaid" role="tabpanel">
+                                    <h4 class="fw-bold mb-4 text-dark-navy">Prepaid Mobile Recharge</h4>
+                                                                        <div id="alertContainer"></div>
+                                    
+                                    <!-- Main Recharge Form State -->
+                                    <div id="rechargeFormState">
+                                        <form id="rechargeForm" class="needs-validation" novalidate>
+                                            <div class="row g-4">
+                                                <div class="col-12">
+                                                    <label class="form-label fw-semibold text-secondary">Mobile Number</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-phone text-muted"></i></span>
+                                                        <span class="input-group-text bg-light fw-bold border-start-0">+91</span>
+                                                        <input type="tel" id="mobileNumber" class="form-control form-control-lg" placeholder="Enter 10 digit number" pattern="[0-9]{10}" required>
+                                                        <div class="invalid-feedback">Please enter a valid 10-digit mobile number.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold text-secondary">Operator</label>
+                                                    <select id="operatorSelect" class="form-select form-select-lg" required>
+                                                        <option value="Stackly" selected>Stackly</option>
+                                                        <option value="Airtel">Airtel</option>
+                                                        <option value="Jio">Jio</option>
+                                                        <option value="Vi">Vi</option>
+                                                        <option value="BSNL">BSNL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold text-secondary">Circle</label>
+                                                    <select id="circleSelect" class="form-select form-select-lg" required>
+                                                        <option value="Delhi NCR" selected>Delhi NCR</option>
+                                                        <option value="Mumbai">Mumbai</option>
+                                                        <option value="Karnataka">Karnataka</option>
+                                                        <option value="Maharashtra">Maharashtra</option>
+                                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 mt-4 text-center">
+                                                    <button type="submit" class="btn btn-primary-custom btn-lg w-100 px-5 ripple">Browse Plans & Recharge</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <!-- Recent Recharges -->
+                                        <div class="mt-5 pt-4 border-top">
+                                            <h5 class="fw-bold text-dark-navy mb-3"><i class="fa-solid fa-clock-rotate-left me-2 text-primary-custom"></i>Recent Recharges</h5>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button class="btn btn-light border rounded-pill px-3 py-2 d-flex align-items-center hover-lift btn-recent" data-num="9876543210" data-op="Stackly" data-circle="Delhi NCR">
+                                                    <div class="bg-primary-gradient rounded-circle p-2 me-2 text-white" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;"><i class="fa-solid fa-user"></i></div>
+                                                    <div class="text-start">
+                                                        <div class="fw-bold text-dark" style="font-size: 0.85rem;">+91 98765 43210</div>
+                                                        <div class="text-muted" style="font-size: 0.7rem;">Stackly • Delhi NCR</div>
+                                                    </div>
+                                                </button>
+                                                <button class="btn btn-light border rounded-pill px-3 py-2 d-flex align-items-center hover-lift btn-recent" data-num="8765432109" data-op="Airtel" data-circle="Mumbai">
+                                                    <div class="bg-secondary rounded-circle p-2 me-2 text-white" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;"><i class="fa-solid fa-user"></i></div>
+                                                    <div class="text-start">
+                                                        <div class="fw-bold text-dark" style="font-size: 0.85rem;">+91 87654 32109</div>
+                                                        <div class="text-muted" style="font-size: 0.7rem;">Airtel • Mumbai</div>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Payment Summary State (Hidden by default) -->
+                                    <div id="paymentSummaryState" class="d-none">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h4 class="fw-bold text-dark-navy mb-0">Payment Summary</h4>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" id="btnBackToForm"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+                                        </div>
+                                        
+                                        <div class="card border-0 bg-light rounded-4 p-4 mb-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+                                                <div>
+                                                    <div class="text-muted small fw-semibold text-uppercase mb-1">Mobile Number</div>
+                                                    <div class="fs-5 fw-bold text-dark" id="summaryNumber">+91 0000000000</div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="text-muted small fw-semibold text-uppercase mb-1">Operator</div>
+                                                    <div class="fs-6 fw-bold text-primary-custom" id="summaryOperator">Stackly - Delhi NCR</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <div class="fw-bold text-dark fs-5">Truly Unlimited Plan</div>
+                                                    <div class="text-secondary small">1.5GB/Day • 28 Days Validity • Unltd Calls</div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="display-6 fw-bold text-dark-navy">₹299</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="button" class="btn btn-primary-custom btn-lg w-100 py-3 shadow-lg hover-lift" id="btnProceedPay"><i class="fa-solid fa-lock me-2"></i>Proceed to Secure Payment</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Postpaid -->
+                                <div class="tab-pane fade" id="postpaid" role="tabpanel">
+                                    <h4 class="fw-bold mb-4 text-dark-navy">Pay Postpaid Bill</h4>
+                                                                        <div id="alertContainer"></div>
+                                    
+                                    <!-- Main Recharge Form State -->
+                                    <div id="rechargeFormState">
+                                        <form id="rechargeForm" class="needs-validation" novalidate>
+                                            <div class="row g-4">
+                                                <div class="col-12">
+                                                    <label class="form-label fw-semibold text-secondary">Mobile Number</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-phone text-muted"></i></span>
+                                                        <span class="input-group-text bg-light fw-bold border-start-0">+91</span>
+                                                        <input type="tel" id="mobileNumber" class="form-control form-control-lg" placeholder="Enter 10 digit number" pattern="[0-9]{10}" required>
+                                                        <div class="invalid-feedback">Please enter a valid 10-digit mobile number.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold text-secondary">Operator</label>
+                                                    <select id="operatorSelect" class="form-select form-select-lg" required>
+                                                        <option value="Stackly" selected>Stackly</option>
+                                                        <option value="Airtel">Airtel</option>
+                                                        <option value="Jio">Jio</option>
+                                                        <option value="Vi">Vi</option>
+                                                        <option value="BSNL">BSNL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold text-secondary">Circle</label>
+                                                    <select id="circleSelect" class="form-select form-select-lg" required>
+                                                        <option value="Delhi NCR" selected>Delhi NCR</option>
+                                                        <option value="Mumbai">Mumbai</option>
+                                                        <option value="Karnataka">Karnataka</option>
+                                                        <option value="Maharashtra">Maharashtra</option>
+                                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 mt-4 text-center">
+                                                    <button type="submit" class="btn btn-primary-custom btn-lg w-100 px-5 ripple">Browse Plans & Recharge</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <!-- Recent Recharges -->
+                                        <div class="mt-5 pt-4 border-top">
+                                            <h5 class="fw-bold text-dark-navy mb-3"><i class="fa-solid fa-clock-rotate-left me-2 text-primary-custom"></i>Recent Recharges</h5>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button class="btn btn-light border rounded-pill px-3 py-2 d-flex align-items-center hover-lift btn-recent" data-num="9876543210" data-op="Stackly" data-circle="Delhi NCR">
+                                                    <div class="bg-primary-gradient rounded-circle p-2 me-2 text-white" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;"><i class="fa-solid fa-user"></i></div>
+                                                    <div class="text-start">
+                                                        <div class="fw-bold text-dark" style="font-size: 0.85rem;">+91 98765 43210</div>
+                                                        <div class="text-muted" style="font-size: 0.7rem;">Stackly • Delhi NCR</div>
+                                                    </div>
+                                                </button>
+                                                <button class="btn btn-light border rounded-pill px-3 py-2 d-flex align-items-center hover-lift btn-recent" data-num="8765432109" data-op="Airtel" data-circle="Mumbai">
+                                                    <div class="bg-secondary rounded-circle p-2 me-2 text-white" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;"><i class="fa-solid fa-user"></i></div>
+                                                    <div class="text-start">
+                                                        <div class="fw-bold text-dark" style="font-size: 0.85rem;">+91 87654 32109</div>
+                                                        <div class="text-muted" style="font-size: 0.7rem;">Airtel • Mumbai</div>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Payment Summary State (Hidden by default) -->
+                                    <div id="paymentSummaryState" class="d-none">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h4 class="fw-bold text-dark-navy mb-0">Payment Summary</h4>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" id="btnBackToForm"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+                                        </div>
+                                        
+                                        <div class="card border-0 bg-light rounded-4 p-4 mb-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+                                                <div>
+                                                    <div class="text-muted small fw-semibold text-uppercase mb-1">Mobile Number</div>
+                                                    <div class="fs-5 fw-bold text-dark" id="summaryNumber">+91 0000000000</div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="text-muted small fw-semibold text-uppercase mb-1">Operator</div>
+                                                    <div class="fs-6 fw-bold text-primary-custom" id="summaryOperator">Stackly - Delhi NCR</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <div class="fw-bold text-dark fs-5">Truly Unlimited Plan</div>
+                                                    <div class="text-secondary small">1.5GB/Day • 28 Days Validity • Unltd Calls</div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="display-6 fw-bold text-dark-navy">₹299</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="button" class="btn btn-primary-custom btn-lg w-100 py-3 shadow-lg hover-lift" id="btnProceedPay"><i class="fa-solid fa-lock me-2"></i>Proceed to Secure Payment</button>
+                                    </div>
+                                </div>
+
+                                <!-- DTH -->
+                                <div class="tab-pane fade" id="dth" role="tabpanel">
+                                    <h4 class="fw-bold mb-4 text-dark-navy">DTH Recharge</h4>
+                                                                        <div id="alertContainer"></div>
+                                    
+                                    <!-- Main Recharge Form State -->
+                                    <div id="rechargeFormState">
+                                        <form id="rechargeForm" class="needs-validation" novalidate>
+                                            <div class="row g-4">
+                                                <div class="col-12">
+                                                    <label class="form-label fw-semibold text-secondary">Mobile Number</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-phone text-muted"></i></span>
+                                                        <span class="input-group-text bg-light fw-bold border-start-0">+91</span>
+                                                        <input type="tel" id="mobileNumber" class="form-control form-control-lg" placeholder="Enter 10 digit number" pattern="[0-9]{10}" required>
+                                                        <div class="invalid-feedback">Please enter a valid 10-digit mobile number.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold text-secondary">Operator</label>
+                                                    <select id="operatorSelect" class="form-select form-select-lg" required>
+                                                        <option value="Stackly" selected>Stackly</option>
+                                                        <option value="Airtel">Airtel</option>
+                                                        <option value="Jio">Jio</option>
+                                                        <option value="Vi">Vi</option>
+                                                        <option value="BSNL">BSNL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold text-secondary">Circle</label>
+                                                    <select id="circleSelect" class="form-select form-select-lg" required>
+                                                        <option value="Delhi NCR" selected>Delhi NCR</option>
+                                                        <option value="Mumbai">Mumbai</option>
+                                                        <option value="Karnataka">Karnataka</option>
+                                                        <option value="Maharashtra">Maharashtra</option>
+                                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 mt-4 text-center">
+                                                    <button type="submit" class="btn btn-primary-custom btn-lg w-100 px-5 ripple">Browse Plans & Recharge</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <!-- Recent Recharges -->
+                                        <div class="mt-5 pt-4 border-top">
+                                            <h5 class="fw-bold text-dark-navy mb-3"><i class="fa-solid fa-clock-rotate-left me-2 text-primary-custom"></i>Recent Recharges</h5>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button class="btn btn-light border rounded-pill px-3 py-2 d-flex align-items-center hover-lift btn-recent" data-num="9876543210" data-op="Stackly" data-circle="Delhi NCR">
+                                                    <div class="bg-primary-gradient rounded-circle p-2 me-2 text-white" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;"><i class="fa-solid fa-user"></i></div>
+                                                    <div class="text-start">
+                                                        <div class="fw-bold text-dark" style="font-size: 0.85rem;">+91 98765 43210</div>
+                                                        <div class="text-muted" style="font-size: 0.7rem;">Stackly • Delhi NCR</div>
+                                                    </div>
+                                                </button>
+                                                <button class="btn btn-light border rounded-pill px-3 py-2 d-flex align-items-center hover-lift btn-recent" data-num="8765432109" data-op="Airtel" data-circle="Mumbai">
+                                                    <div class="bg-secondary rounded-circle p-2 me-2 text-white" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;"><i class="fa-solid fa-user"></i></div>
+                                                    <div class="text-start">
+                                                        <div class="fw-bold text-dark" style="font-size: 0.85rem;">+91 87654 32109</div>
+                                                        <div class="text-muted" style="font-size: 0.7rem;">Airtel • Mumbai</div>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Payment Summary State (Hidden by default) -->
+                                    <div id="paymentSummaryState" class="d-none">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h4 class="fw-bold text-dark-navy mb-0">Payment Summary</h4>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" id="btnBackToForm"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+                                        </div>
+                                        
+                                        <div class="card border-0 bg-light rounded-4 p-4 mb-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+                                                <div>
+                                                    <div class="text-muted small fw-semibold text-uppercase mb-1">Mobile Number</div>
+                                                    <div class="fs-5 fw-bold text-dark" id="summaryNumber">+91 0000000000</div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="text-muted small fw-semibold text-uppercase mb-1">Operator</div>
+                                                    <div class="fs-6 fw-bold text-primary-custom" id="summaryOperator">Stackly - Delhi NCR</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <div class="fw-bold text-dark fs-5">Truly Unlimited Plan</div>
+                                                    <div class="text-secondary small">1.5GB/Day • 28 Days Validity • Unltd Calls</div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="display-6 fw-bold text-dark-navy">₹299</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="button" class="btn btn-primary-custom btn-lg w-100 py-3 shadow-lg hover-lift" id="btnProceedPay"><i class="fa-solid fa-lock me-2"></i>Proceed to Secure Payment</button>
+                                    </div>
+                                </div>
+
+                                <!-- Broadband -->
+                                <div class="tab-pane fade" id="broadband" role="tabpanel">
+                                    <h4 class="fw-bold mb-4 text-dark-navy">Broadband / Landline Bill Payment</h4>
+                                                                        <div id="alertContainer"></div>
+                                    
+                                    <!-- Main Recharge Form State -->
+                                    <div id="rechargeFormState">
+                                        <form id="rechargeForm" class="needs-validation" novalidate>
+                                            <div class="row g-4">
+                                                <div class="col-12">
+                                                    <label class="form-label fw-semibold text-secondary">Mobile Number</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-phone text-muted"></i></span>
+                                                        <span class="input-group-text bg-light fw-bold border-start-0">+91</span>
+                                                        <input type="tel" id="mobileNumber" class="form-control form-control-lg" placeholder="Enter 10 digit number" pattern="[0-9]{10}" required>
+                                                        <div class="invalid-feedback">Please enter a valid 10-digit mobile number.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold text-secondary">Operator</label>
+                                                    <select id="operatorSelect" class="form-select form-select-lg" required>
+                                                        <option value="Stackly" selected>Stackly</option>
+                                                        <option value="Airtel">Airtel</option>
+                                                        <option value="Jio">Jio</option>
+                                                        <option value="Vi">Vi</option>
+                                                        <option value="BSNL">BSNL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold text-secondary">Circle</label>
+                                                    <select id="circleSelect" class="form-select form-select-lg" required>
+                                                        <option value="Delhi NCR" selected>Delhi NCR</option>
+                                                        <option value="Mumbai">Mumbai</option>
+                                                        <option value="Karnataka">Karnataka</option>
+                                                        <option value="Maharashtra">Maharashtra</option>
+                                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 mt-4 text-center">
+                                                    <button type="submit" class="btn btn-primary-custom btn-lg w-100 px-5 ripple">Browse Plans & Recharge</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <!-- Recent Recharges -->
+                                        <div class="mt-5 pt-4 border-top">
+                                            <h5 class="fw-bold text-dark-navy mb-3"><i class="fa-solid fa-clock-rotate-left me-2 text-primary-custom"></i>Recent Recharges</h5>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button class="btn btn-light border rounded-pill px-3 py-2 d-flex align-items-center hover-lift btn-recent" data-num="9876543210" data-op="Stackly" data-circle="Delhi NCR">
+                                                    <div class="bg-primary-gradient rounded-circle p-2 me-2 text-white" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;"><i class="fa-solid fa-user"></i></div>
+                                                    <div class="text-start">
+                                                        <div class="fw-bold text-dark" style="font-size: 0.85rem;">+91 98765 43210</div>
+                                                        <div class="text-muted" style="font-size: 0.7rem;">Stackly • Delhi NCR</div>
+                                                    </div>
+                                                </button>
+                                                <button class="btn btn-light border rounded-pill px-3 py-2 d-flex align-items-center hover-lift btn-recent" data-num="8765432109" data-op="Airtel" data-circle="Mumbai">
+                                                    <div class="bg-secondary rounded-circle p-2 me-2 text-white" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;"><i class="fa-solid fa-user"></i></div>
+                                                    <div class="text-start">
+                                                        <div class="fw-bold text-dark" style="font-size: 0.85rem;">+91 87654 32109</div>
+                                                        <div class="text-muted" style="font-size: 0.7rem;">Airtel • Mumbai</div>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Payment Summary State (Hidden by default) -->
+                                    <div id="paymentSummaryState" class="d-none">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h4 class="fw-bold text-dark-navy mb-0">Payment Summary</h4>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" id="btnBackToForm"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+                                        </div>
+                                        
+                                        <div class="card border-0 bg-light rounded-4 p-4 mb-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+                                                <div>
+                                                    <div class="text-muted small fw-semibold text-uppercase mb-1">Mobile Number</div>
+                                                    <div class="fs-5 fw-bold text-dark" id="summaryNumber">+91 0000000000</div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="text-muted small fw-semibold text-uppercase mb-1">Operator</div>
+                                                    <div class="fs-6 fw-bold text-primary-custom" id="summaryOperator">Stackly - Delhi NCR</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <div class="fw-bold text-dark fs-5">Truly Unlimited Plan</div>
+                                                    <div class="text-secondary small">1.5GB/Day • 28 Days Validity • Unltd Calls</div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="display-6 fw-bold text-dark-navy">₹299</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="button" class="btn btn-primary-custom btn-lg w-100 py-3 shadow-lg hover-lift" id="btnProceedPay"><i class="fa-solid fa-lock me-2"></i>Proceed to Secure Payment</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Offers Section -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Latest Cashback & Offers</h2>
+                    <p class="section-subtitle">Save more on your recharges with our partner offers.</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="premium-card bg-white p-4 tilt-card border border-light">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-circle">
+                                    <i class="fa-brands fa-google-pay fs-4"></i>
+                                </div>
+                                <h5 class="fw-bold m-0">Up to ₹50 Cashback</h5>
+                            </div>
+                            <p class="text-muted small">Pay using Google Pay for recharges above ₹299 and get up to ₹50 cashback in your bank account.</p>
+                            <a href="404.html" class="text-primary-custom text-decoration-none fw-bold small">Terms apply <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="premium-card bg-white p-4 tilt-card border border-light">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="bg-info bg-opacity-10 text-info p-3 rounded-circle">
+                                    <i class="fa-solid fa-wallet fs-4"></i>
+                                </div>
+                                <h5 class="fw-bold m-0">Flat ₹30 Discount</h5>
+                            </div>
+                            <p class="text-muted small">Use code Stackly30 while paying through Paytm wallet on your first Stackly app recharge.</p>
+                            <a href="404.html" class="text-primary-custom text-decoration-none fw-bold small">Terms apply <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="premium-card bg-white p-4 tilt-card border border-light">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="bg-danger bg-opacity-10 text-danger p-3 rounded-circle">
+                                    <i class="fa-solid fa-credit-card fs-4"></i>
+                                </div>
+                                <h5 class="fw-bold m-0">10% Off on Cards</h5>
+                            </div>
+                            <p class="text-muted small">Get 10% instant discount on annual plans when you pay using HDFC or ICICI Bank Credit Cards.</p>
+                            <a href="404.html" class="text-primary-custom text-decoration-none fw-bold small">Terms apply <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQs Section -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8" data-aos="fade-up">
+                        <div class="text-center mb-5">
+                            <h2 class="section-title">Frequently Asked Questions</h2>
+                            <p class="section-subtitle">Got questions? We've got answers.</p>
+                        </div>
+                        
+                        <div class="accordion" id="rechargeFAQ">
+                            <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button fw-bold collapsed bg-light-gray" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        How long does a recharge take to reflect?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#rechargeFAQ">
+                                    <div class="accordion-body text-muted">
+                                        Usually, recharges are instant. Once the payment is successful, your plan benefits are activated immediately. In rare cases of network delay, it might take up to 15 minutes.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button fw-bold collapsed bg-light-gray" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        What happens if my payment fails but money is deducted?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#rechargeFAQ">
+                                    <div class="accordion-body text-muted">
+                                        Don't worry. If the recharge fails, the deducted amount will be automatically refunded to your original payment method within 3-5 working days depending on your bank.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button fw-bold collapsed bg-light-gray" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Can I schedule a recharge for a later date?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#rechargeFAQ">
+                                    <div class="accordion-body text-muted">
+                                        Yes, you can use our AutoPay feature to schedule automatic recharges 2 days before your current plan expires. Simply set it up via the Stackly App.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+        <!-- Modern Footer -->
+    <footer class="pt-5 bg-dark-navy text-white position-relative overflow-hidden mt-auto">
+        <div class="container position-relative z-1">
+            <div class="row g-4 mb-5">
+                <!-- Brand & Newsletter -->
+                <div class="col-lg-4 col-md-6">
+                    <a class="navbar-brand text-white mb-4 d-inline-block" href="index.html">
+                        <img src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top">
+                    </a>
+                    <p class="text-white-50 mb-4 pe-lg-4">Empowering India with next-generation digital connectivity. High-speed 5G, reliable fiber, and enterprise solutions for everyone.</p>
+                    
+                    <h6 class="fw-bold mb-3">Subscribe to Newsletter</h6>
+                    <form id="newsletterForm" class="d-flex gap-2 mb-4 position-relative">
+                        <input type="email" class="form-control border-0 bg-white bg-opacity-10 text-white" style="color: white !important;" placeholder="Email address" required>
+                        <button type="submit" class="btn btn-primary-custom px-3 flex-shrink-0 ripple">
+                            <span class="btn-text"><i class="fa-solid fa-paper-plane"></i></span>
+                            <span class="btn-success d-none"><i class="fa-solid fa-check"></i></span>
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">About Us</a></li>
+                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Careers</a></li>
+                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Investors</a></li>
+                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Press Center</a></li>
+                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Sustainability</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-4">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="recharge.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Prepaid Recharge</a></li>
+                        <li class="mb-2"><a href="plans.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Postpaid Bill</a></li>
+                        <li class="mb-2"><a href="broadband.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Fiber Broadband</a></li>
+                        <li class="mb-2"><a href="business.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Enterprise Solutions</a></li>
+                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Intl Roaming</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact & Socials -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-4">Contact & Support</h5>
+                    <div class="d-flex align-items-start gap-3 mb-3 text-white-50">
+                        <i class="fa-solid fa-headset mt-1 text-primary-custom"></i>
+                        <div>
+                            <div class="small">Toll-Free Support</div>
+                            <div class="fw-bold text-white">1800-123-4567</div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start gap-3 mb-4 text-white-50">
+                        <i class="fa-solid fa-envelope mt-1 text-primary-custom"></i>
+                        <div>
+                            <div class="small">Email Assistance</div>
+                            <div class="fw-bold text-white">support@Stackly.com</div>
+                        </div>
+                    </div>
+                    
+                    <h6 class="fw-bold mb-3 mt-4">Follow Us</h6>
+                    <div class="d-flex gap-2">
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright & Legal -->
+            <div class="border-top border-secondary border-opacity-50 pt-4 pb-4 d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="text-white-50 small mb-3 mb-md-0">&copy; 2026 Stackly Telecom. All rights reserved.</p>
+                <div class="d-flex gap-3 small">
+                    <a href="404.html" class="text-white-50 text-decoration-none hover-text-white transition-all">Privacy Policy</a>
+                    <a href="404.html" class="text-white-50 text-decoration-none hover-text-white transition-all">Terms of Service</a>
+                    <a href="404.html" class="text-white-50 text-decoration-none hover-text-white transition-all">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Libraries -->
+    <!-- GSAP -->
+    
+    <!-- AOS -->
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.min.js"></script>
+    <script src="assets/js/animations.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var navbarCollapse = document.getElementById('navbarNav');
+        if (navbarCollapse) {
+            navbarCollapse.addEventListener('show.bs.collapse', function () {
+                document.body.classList.add('no-scroll');
+            });
+            navbarCollapse.addEventListener('hidden.bs.collapse', function () {
+                document.body.classList.remove('no-scroll');
+            });
+            
+            // Close mobile menu on link click
+            var navLinks = navbarCollapse.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (window.getComputedStyle(document.querySelector('.navbar-toggler')).display !== 'none') {
+                        var bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                        if (bsCollapse) bsCollapse.hide();
+                    }
+                });
+            });
+        }
+    });
+</script>
+    <!-- Animation Libraries -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script .min.js"></script>
+    <!-- Recharge App Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('rechargeForm');
+            const mobileInput = document.getElementById('mobileNumber');
+            const opSelect = document.getElementById('operatorSelect');
+            const circleSelect = document.getElementById('circleSelect');
+            const stateForm = document.getElementById('rechargeFormState');
+            const stateSummary = document.getElementById('paymentSummaryState');
+            const alertContainer = document.getElementById('alertContainer');
+            
+            const summaryNumber = document.getElementById('summaryNumber');
+            const summaryOperator = document.getElementById('summaryOperator');
+            
+            // Helper function to show alerts
+            function showAlert(message, type) {
+                alertContainer.innerHTML = 
+                    <div class="alert alert- + type +  alert-dismissible fade show shadow-sm" role="alert">
+                        <i class="fa-solid  + (type === 'danger' ? 'fa-triangle-exclamation' : 'fa-circle-check') +  me-2"></i>
+                         + message + 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                ;
+            }
+
+            // Form Submit Logic
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const num = mobileInput.value.trim();
+                const regex = /^\d{10}$/;
+                
+                if (!regex.test(num)) {
+                    mobileInput.classList.add('is-invalid');
+                    // Shake animation for error
+                    mobileInput.style.animation = 'shake 0.5s';
+                    setTimeout(() => mobileInput.style.animation = '', 500);
+                    showAlert('Please enter a valid 10-digit mobile number without country code.', 'danger');
+                    return;
+                }
+                
+                mobileInput.classList.remove('is-invalid');
+                alertContainer.innerHTML = ''; // Clear alerts
+                
+                // Populate Summary
+                summaryNumber.innerText = '+91 ' + num.substring(0,5) + ' ' + num.substring(5);
+                summaryOperator.innerText = opSelect.value + ' - ' + circleSelect.value;
+                
+                // Transition State
+                stateForm.style.opacity = '0';
+                setTimeout(() => {
+                    stateForm.classList.add('d-none');
+                    stateSummary.classList.remove('d-none');
+                    stateSummary.style.opacity = '0';
+                    setTimeout(() => stateSummary.style.opacity = '1', 50);
+                }, 300);
+            });
+            
+            // Back Button Logic
+            document.getElementById('btnBackToForm').addEventListener('click', function() {
+                stateSummary.style.opacity = '0';
+                setTimeout(() => {
+                    stateSummary.classList.add('d-none');
+                    stateForm.classList.remove('d-none');
+                    stateForm.style.opacity = '0';
+                    setTimeout(() => stateForm.style.opacity = '1', 50);
+                }, 300);
+            });
+            
+            // Pay Now Button Logic
+            document.getElementById('btnProceedPay').addEventListener('click', function() {
+                const btn = this;
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...';
+                btn.classList.add('disabled');
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-check me-2"></i>Payment Successful';
+                    btn.classList.remove('btn-primary-custom');
+                    btn.classList.add('btn-success');
+                    showAlert('Recharge successful! Your plan is now active.', 'success');
+                    
+                    // Reset after 3 seconds
+                    setTimeout(() => {
+                        window.location.href = 'dashboards/customer.html';
+                    }, 2000);
+                }, 1500);
+            });
+            
+            // Recent Recharges Logic
+            document.querySelectorAll('.btn-recent').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    mobileInput.value = this.getAttribute('data-num');
+                    opSelect.value = this.getAttribute('data-op');
+                    circleSelect.value = this.getAttribute('data-circle');
+                    
+                    // Optional: Auto submit
+                    // form.dispatchEvent(new Event('submit'));
+                });
+            });
+        });
+    </script>
+    
+    <!-- Add shake keyframes to head if not present -->
+    <style>
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+        #rechargeFormState, #paymentSummaryState {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</body>
+</html>
+
+
+

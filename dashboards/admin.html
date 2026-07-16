@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Stackly Telecom</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.min.css?v=1.1">
+    <link rel="stylesheet" href="../assets/css/dashboard.min.css?v=1.1">
+</head>
+<body>
+
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Admin Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header d-flex align-items-center justify-content-between">
+            <a class="navbar-brand text-white fw-bold m-0" href="../index.html">
+                <img src="../redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top">
+            </a>
+            <button class="btn btn-sm btn-link text-white d-lg-none p-0" id="sidebarCloseBtn"><i class="fa-solid fa-xmark fs-4"></i></button>
+        </div>
+        
+        <div class="p-4 border-bottom border-secondary border-opacity-25">
+            <div class="d-flex align-items-center gap-3">
+                <img src="../assets/images/avatar.png" alt="Profile" class="rounded-circle" style="width: 45px; height: 45px; object-fit: cover;">
+                <div>
+                    <h6 class="mb-0 fw-bold" id="sidebarUserName">Admin</h6>
+                    <small class="text-white-50" id="sidebarUserEmail">admin@stackly.com</small>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul class="nav flex-column" id="dashboardTabs" role="tablist">
+                <li class="nav-item">
+                    <button class="sidebar-link active w-100 bg-transparent text-start border-0 border-start border-4" data-custom-tab="true" data-bs-target="#overview"><i class="fa-solid fa-chart-pie"></i> Analytics</button>
+                </li>
+                <li class="nav-item">
+                    <button class="sidebar-link w-100 bg-transparent text-start border-0 border-start border-4" data-custom-tab="true" data-bs-target="#users"><i class="fa-solid fa-users"></i> Users</button>
+                </li>
+                <li class="nav-item">
+                    <button class="sidebar-link w-100 bg-transparent text-start border-0 border-start border-4" data-custom-tab="true" data-bs-target="#billing"><i class="fa-solid fa-file-invoice-dollar"></i> Finance</button>
+                </li>
+                <li class="nav-item">
+                    <button class="sidebar-link w-100 bg-transparent text-start border-0 border-start border-4" data-custom-tab="true" data-bs-target="#settings"><i class="fa-solid fa-gear"></i> Settings</button>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="../login.html" class="sidebar-link text-danger p-0"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="dash-topbar">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light me-3 shadow-sm" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+                <a href="../index.html"><img src="../redlogo.webp" alt="Stackly Logo" height="28" class="d-inline-block align-text-top"></a>
+            </div>
+            
+            <div class="d-flex align-items-center gap-3">
+                <div class="input-group d-none d-md-flex">
+                    <span class="input-group-text bg-light border-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                    <input type="text" class="form-control bg-light border-0" placeholder="Search...">
+                </div>
+                <div class="position-relative">
+                    <button class="btn btn-light rounded-circle"><i class="fa-regular fa-bell"></i></button>
+                    <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle badge-pulse"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="p-4" id="dashboardContainer">
+            <div class="tab-content">
+            
+                <!-- OVERVIEW TAB -->
+                <div class="tab-pane fade show active" id="overview">
+                    
+                    <div class="row g-4 mb-4 skeleton-group">
+                        <div class="col-md-3"><div class="skeleton skeleton-box" style="height: 120px;"></div></div>
+                        <div class="col-md-3"><div class="skeleton skeleton-box" style="height: 120px;"></div></div>
+                        <div class="col-md-3"><div class="skeleton skeleton-box" style="height: 120px;"></div></div>
+                        <div class="col-md-3"><div class="skeleton skeleton-box" style="height: 120px;"></div></div>
+                    </div>
+                    
+                    <div class="row g-4 mb-4 dash-real-content-flex">
+                        <div class="col-md-3">
+                            <div class="stat-card border-0 tilt-card">
+                                <h6>Total Users</h6>
+                                <h2 class="fw-bold">124.5K</h2>
+                                <span class="badge bg-success-subtle text-success"><i class="fa-solid fa-arrow-trend-up"></i> +5.2%</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card border-0 tilt-card">
+                                <h6>Revenue (MTD)</h6>
+                                <h2 class="fw-bold">₹4.2M</h2>
+                                <span class="badge bg-success-subtle text-success"><i class="fa-solid fa-arrow-trend-up"></i> +12%</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card border-0 tilt-card">
+                                <h6>Active Support Tickets</h6>
+                                <h2 class="fw-bold text-danger">342</h2>
+                                <span class="badge bg-danger-subtle text-danger"><i class="fa-solid fa-arrow-trend-up"></i> +8%</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card border-0 tilt-card">
+                                <h6>Network Health</h6>
+                                <h2 class="fw-bold text-primary">99.9%</h2>
+                                <span class="badge bg-success-subtle text-success">Optimal</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row g-4 mb-4 skeleton-group">
+                        <div class="col-md-8"><div class="skeleton skeleton-box" style="height: 350px;"></div></div>
+                        <div class="col-md-4"><div class="skeleton skeleton-box" style="height: 350px;"></div></div>
+                    </div>
+
+                    <div class="row g-4 mb-4 dash-real-content-flex">
+                        <div class="col-md-8">
+                            <div class="stat-card dash-real-content" style="height: 350px;">
+                                <h5 class="fw-bold mb-4">Revenue Trend (2026)</h5>
+                                <div style="height: 250px;">
+                                    <canvas id="revenueChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-card dash-real-content" style="height: 350px;">
+                                <h5 class="fw-bold mb-4">User Growth by Plan</h5>
+                                <div style="height: 250px;">
+                                    <canvas id="userGrowthChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- USERS TAB -->
+                <div class="tab-pane fade" id="users">
+                    <div class="stat-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                            <h5 class="fw-bold m-0">User Management</h5>
+                            <div class="d-flex gap-2">
+                                <select class="form-select form-select-sm" style="width: auto;">
+                                    <option>All Plans</option>
+                                    <option>Prepaid</option>
+                                    <option>Postpaid</option>
+                                </select>
+                                <select class="form-select form-select-sm" style="width: auto;">
+                                    <option>All Statuses</option>
+                                    <option>Active</option>
+                                    <option>Suspended</option>
+                                </select>
+                                <button class="btn btn-sm btn-primary-custom" data-bs-toggle="modal" data-bs-target="#addUserModal"><i class="fa-solid fa-plus me-1"></i> Add User</button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-custom">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Plan</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold">#US-10291</td>
+                                        <td>John Doe<br><small class="text-muted">+91 9876543210</small></td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>True 5G Unlimited</td>
+                                        <td><button class="btn btn-sm btn-light">Manage</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#US-10292</td>
+                                        <td>Sarah Smith<br><small class="text-muted">+91 9123456789</small></td>
+                                        <td><span class="badge bg-danger">Suspended</span></td>
+                                        <td>Home Fiber (999)</td>
+                                        <td><button class="btn btn-sm btn-light">Manage</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- BILLING TAB -->
+                <div class="tab-pane fade" id="billing">
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="stat-card border-0 tilt-card text-center py-5">
+                                <h6 class="text-muted text-uppercase mb-2">Total Monthly Revenue</h6>
+                                <h2 class="fw-bold text-success display-5">₹4.2M</h2>
+                                <span class="badge bg-success-subtle text-success"><i class="fa-solid fa-arrow-trend-up"></i> +12% from last month</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-card border-0 tilt-card text-center py-5">
+                                <h6 class="text-muted text-uppercase mb-2">Pending Invoices</h6>
+                                <h2 class="fw-bold text-warning display-5">₹850K</h2>
+                                <span class="badge bg-warning-subtle text-warning"><i class="fa-solid fa-clock"></i> 342 unpaid accounts</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-card border-0 tilt-card text-center py-5">
+                                <h6 class="text-muted text-uppercase mb-2">ARPU (Avg Rev Per User)</h6>
+                                <h2 class="fw-bold text-primary display-5">₹412</h2>
+                                <span class="badge bg-primary-subtle text-primary"><i class="fa-solid fa-arrow-trend-up"></i> +5% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS TAB -->
+                <div class="tab-pane fade" id="settings">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="stat-card h-100">
+                                <h5 class="fw-bold mb-4">Platform Configuration</h5>
+                                <form>
+                                    <div class="mb-3">
+                                        <label class="form-label small text-muted">Site Banner Message</label>
+                                        <input type="text" class="form-control" value="Welcome to the new Stackly 5G network!">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label small text-muted">Maintenance Mode</label>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="maintenanceToggle">
+                                            <label class="form-check-label" for="maintenanceToggle">Enable Maintenance Mode</label>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary-custom btn-sm">Save Config</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="stat-card h-100">
+                                <h5 class="fw-bold mb-4">API Integrations</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-3">
+                                        <div>
+                                            <h6 class="m-0 fw-bold">Payment Gateway (Stripe)</h6>
+                                            <small class="text-success"><i class="fa-solid fa-circle text-success" style="font-size: 0.5rem;"></i> Connected</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary">Configure</button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-3">
+                                        <div>
+                                            <h6 class="m-0 fw-bold">SMS Provider (Twilio)</h6>
+                                            <small class="text-success"><i class="fa-solid fa-circle text-success" style="font-size: 0.5rem;"></i> Connected</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary">Configure</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/dashboard.min.js?v=1.1"></script>
+    
+    <script>
+        document.querySelectorAll('button[data-custom-tab="true"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-bs-target');
+                document.querySelectorAll('.sidebar-link').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('show', 'active'));
+                document.querySelector(targetId).classList.add('show', 'active');
+                
+                const sidebar = document.getElementById('sidebar');
+                if(sidebar.classList.contains('show')) {
+                    sidebar.classList.remove('show');
+                    document.getElementById('sidebarOverlay').classList.remove('show');
+                }
+            });
+        });
+
+        window.initAdminCharts = function() {
+            const ctx = document.getElementById('revenueChart');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                        datasets: [{
+                            label: 'Revenue (₹ Cr)',
+                            data: [35, 38, 36, 40, 42, 41, 45, 47, 44, 45.2],
+                            borderColor: '#0a1128',
+                            backgroundColor: 'rgba(10, 17, 40, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { beginAtZero: true }
+                        }
+                    }
+                });
+            }
+        };
+        
+        document.getElementById('sidebarCloseBtn').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('show');
+            document.getElementById('sidebarOverlay').classList.remove('show');
+            document.body.classList.remove('sidebar-open');
+        });
+
+        // Dynamic User Name from localStorage
+        (function() {
+            const userName = localStorage.getItem('stacklyUserName');
+            const userEmail = localStorage.getItem('stacklyUserEmail');
+            if (userName) document.getElementById('sidebarUserName').textContent = userName;
+            if (userEmail) document.getElementById('sidebarUserEmail').textContent = userEmail;
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,626 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support | Stackly Telecom</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <link rel="stylesheet" href="assets/css/animations.min.css">
+    <style>
+        /* Smooth Accordion */
+        .accordion-button::after {
+            background-image: none !important;
+            content: '\f067'; /* fa-plus */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+        .accordion-button:not(.collapsed)::after {
+            content: '\f068'; /* fa-minus */
+            transform: rotate(180deg);
+        }
+        .accordion-item { transition: all 0.3s ease; }
+        .accordion-item:hover { transform: translateX(5px); }
+        
+        /* Chatbot UI */
+        .chat-widget-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-red, #e50914);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .chat-widget-btn:hover { transform: scale(1.1); }
+        .chat-window {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: bottom right;
+        }
+        .chat-window.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+        .chat-header {
+            background: var(--dark-navy, #0a1128);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+        .chat-message {
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+        .chat-message.bot {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 0 15px 15px 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .chat-input {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body class="bg-light-gray">
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
+    <!-- Header / Navbar -->
+    <header>
+                <nav class="navbar navbar-expand-xl navbar-custom">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="recharge.html">Recharge</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="plans.html">Plans</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="broadband.html">Broadband</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="business.html">Business</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="support.html" class="nav-link nav-link-custom active">Support</a></li>
+                        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                            <a href="login.html" class="btn btn-outline-custom me-2 ripple">Login</a>
+                            <a href="signup.html" class="btn btn-primary-custom ripple">Sign Up</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Support Hero -->
+        <section class="py-5 bg-dark-navy text-white position-relative overflow-hidden text-center parallax-bg" style="background-image: url('image/support-hero.webp');">
+            <div class="container position-relative z-1 py-4">
+                <h1 class="display-4 fw-bold mb-3" data-aos="fade-down">How can we help you?</h1>
+                <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-lg shadow-lg rounded-pill overflow-hidden bg-white p-1">
+                            <span class="input-group-text bg-transparent border-0 text-secondary ps-4"><i class="fa-solid fa-magnifying-glass"></i></span>
+                            <input type="text" id="faqSearchInput" class="form-control border-0 shadow-none" placeholder="Search for answers, e.g. 'How to activate roaming'">
+                            <button class="btn btn-primary-custom rounded-pill px-4" onclick="window.location.href='404.html'">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Help Options -->
+        <section class="section-padding bg-light-gray" style="margin-top: -50px; z-index: 10; position: relative;">
+            <div class="container">
+                <div class="row justify-content-center g-4">
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card border-0 bg-white text-center p-4 h-100 shadow-lg hover-lift tilt-card rounded-4 position-relative overflow-hidden group">
+                            <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary-custom opacity-0 group-hover-opacity-10" style="transition: opacity 0.3s ease;"></div>
+                            <div class="bg-primary bg-opacity-10 d-inline-flex justify-content-center align-items-center rounded-circle mb-3" style="width: 80px; height: 80px;">
+                                <i class="fa-solid fa-file-invoice-dollar text-primary-custom fs-2"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark-navy">Bills & Recharges</h5>
+                            <p class="small text-muted mb-0">Pay bills instantly</p>
+                            <a href="recharge.html" class="stretched-link text-decoration-none"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card border-0 bg-white text-center p-4 h-100 shadow-lg hover-lift tilt-card rounded-4 position-relative overflow-hidden group">
+                            <div class="position-absolute top-0 start-0 w-100 h-100 bg-info opacity-0 group-hover-opacity-10" style="transition: opacity 0.3s ease;"></div>
+                            <div class="bg-info bg-opacity-10 d-inline-flex justify-content-center align-items-center rounded-circle mb-3" style="width: 80px; height: 80px;">
+                                <i class="fa-solid fa-sim-card text-info fs-2"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark-navy">New Connection</h5>
+                            <p class="small text-muted mb-0">Get a 5G SIM</p>
+                            <a href="404.html" class="stretched-link text-decoration-none"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card border-0 bg-white text-center p-4 h-100 shadow-lg hover-lift tilt-card rounded-4 position-relative overflow-hidden group">
+                            <div class="position-absolute top-0 start-0 w-100 h-100 bg-success opacity-0 group-hover-opacity-10" style="transition: opacity 0.3s ease;"></div>
+                            <div class="bg-success bg-opacity-10 d-inline-flex justify-content-center align-items-center rounded-circle mb-3" style="width: 80px; height: 80px;">
+                                <i class="fa-solid fa-plane-departure text-success fs-2"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark-navy">Intl. Roaming</h5>
+                            <p class="small text-muted mb-0">Stay connected abroad</p>
+                            <a href="plans.html" class="stretched-link text-decoration-none"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card border-0 bg-white text-center p-4 h-100 shadow-lg hover-lift tilt-card rounded-4 position-relative overflow-hidden group">
+                            <div class="position-absolute top-0 start-0 w-100 h-100 bg-warning opacity-0 group-hover-opacity-10" style="transition: opacity 0.3s ease;"></div>
+                            <div class="bg-warning bg-opacity-10 d-inline-flex justify-content-center align-items-center rounded-circle mb-3" style="width: 80px; height: 80px;">
+                                <i class="fa-solid fa-tower-broadcast text-warning fs-2"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark-navy">Network & Speed</h5>
+                            <p class="small text-muted mb-0">Check coverage</p>
+                            <a href="404.html" class="stretched-link text-decoration-none"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forms & Tracking -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="row g-5">
+                    <!-- Raise Complaint -->
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="premium-card border-top border-danger border-4">
+                            <h3 class="fw-bold mb-4">Raise a Complaint</h3>
+                            <form class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Mobile / Landline Number</label>
+                                    <input type="tel" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Category</label>
+                                    <select class="form-select" required>
+                                        <option value="" selected disabled>Select Category</option>
+                                        <option>Network Issue</option>
+                                        <option>Billing & Recharge</option>
+                                        <option>SIM Activation</option>
+                                        <option>Value Added Services</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label small fw-bold">Description</label>
+                                    <textarea class="form-control" rows="4" placeholder="Describe your issue..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary-custom w-100 ripple">Submit Complaint</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Track Request & Contact Info -->
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="premium-card h-100 d-flex flex-column justify-content-between tilt-card">
+                            <!-- Track Request -->
+                            <div>
+                                <h4 class="fw-bold mb-3 text-dark-navy">Track Service Request</h4>
+                                <p class="small text-muted mb-3">Enter your complaint number to check status.</p>
+                                <form class="needs-validation mb-4" novalidate>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light" placeholder="e.g. SR123456789" required>
+                                        <button class="btn btn-dark px-4" type="submit">Track</button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <hr class="text-muted opacity-25 my-4">
+                            
+                            <!-- Contact Information -->
+                            <div>
+                                <h4 class="fw-bold mb-4 text-dark-navy">Contact Information</h4>
+                                <div class="d-flex align-items-center gap-3 mb-3 hover-lift p-2 rounded-3" style="transition: background 0.3s ease;">
+                                    <div class="bg-primary bg-opacity-10 text-primary-custom p-3 rounded-circle shadow-sm">
+                                        <i class="fa-solid fa-phone fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold m-0 text-dark-navy">Customer Care</h6>
+                                        <p class="text-muted small m-0">1800-123-4567 (Toll Free)</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-3 hover-lift p-2 rounded-3" style="transition: background 0.3s ease;">
+                                    <div class="bg-info bg-opacity-10 text-info p-3 rounded-circle shadow-sm">
+                                        <i class="fa-solid fa-envelope fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold m-0 text-dark-navy">Email Support</h6>
+                                        <p class="text-muted small m-0">support@stackly.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads -->
+        <section class="section-padding bg-light-gray">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8" data-aos="fade-up">
+                        <div class="text-center mb-5">
+                            <h6 class="text-primary-custom fw-bold text-uppercase tracking-wider mb-2">Resources</h6>
+                            <h2 class="fw-bold text-dark-navy">Useful Downloads</h2>
+                            <p class="text-secondary">Get the forms and apps you need for a seamless experience.</p>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="premium-card p-4 h-100 d-flex flex-column justify-content-between hover-lift text-center tilt-card bg-white border-bottom border-danger border-4">
+                                    <div>
+                                        <i class="fa-solid fa-file-pdf text-danger fs-1 mb-3"></i>
+                                        <h6 class="fw-bold text-dark-navy mb-2">New Connection Form</h6>
+                                        <span class="small text-muted d-block mb-4">PDF Document - 1.2 MB</span>
+                                    </div>
+                                    <a href="404.html" class="btn btn-outline-custom rounded-pill px-4 py-2 w-100 fw-bold">Download <i class="fa-solid fa-download ms-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="premium-card p-4 h-100 d-flex flex-column justify-content-between hover-lift text-center tilt-card bg-white border-bottom border-danger border-4">
+                                    <div>
+                                        <i class="fa-solid fa-file-pdf text-danger fs-1 mb-3"></i>
+                                        <h6 class="fw-bold text-dark-navy mb-2">Postpaid Migration</h6>
+                                        <span class="small text-muted d-block mb-4">PDF Document - 0.8 MB</span>
+                                    </div>
+                                    <a href="404.html" class="btn btn-outline-custom rounded-pill px-4 py-2 w-100 fw-bold">Download <i class="fa-solid fa-download ms-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-5">
+                                <div class="bg-animated-gradient rounded-5 p-5 text-white text-center shadow-lg tilt-card border-0 position-relative overflow-hidden group">
+                                    <div class="position-absolute top-0 start-0 w-100 h-100 opacity-25" style="background: url('https://www.transparenttextures.com/patterns/connected.png');"></div>
+                                    <div class="position-absolute top-0 end-0 p-4 opacity-10 group-hover-opacity-25" style="transition: opacity 0.5s ease;">
+                                        <i class="fa-brands fa-apple" style="font-size: 8rem; margin-right: -2rem;"></i>
+                                    </div>
+                                    <div class="position-relative z-1">
+                                        <h4 class="fw-bold mb-3 display-6">Get the Stackly App</h4>
+                                        <p class="text-white-50 mb-4 mx-auto fs-5" style="max-width: 500px;">Manage your account, pay bills, and get faster support right from your pocket.</p>
+                                        <div class="d-flex justify-content-center gap-3">
+                                            <button class="btn btn-dark btn-lg border border-light border-opacity-25 px-4 ripple hover-lift rounded-pill" onclick="window.location.href='404.html'"><i class="fa-brands fa-apple fs-5 me-2"></i> App Store</button>
+                                            <button class="btn btn-dark btn-lg border border-light border-opacity-25 px-4 ripple hover-lift rounded-pill" onclick="window.location.href='404.html'"><i class="fa-brands fa-google-play fs-5 me-2"></i> Play Store</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQs -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8" data-aos="fade-up">
+                        <div class="text-center mb-5">
+                            <h2 class="section-title fw-bold text-dark-navy">Frequently Asked Questions</h2>
+                        </div>
+                        
+                        <!-- Search No Results State -->
+                        <div id="faqNoResults" class="text-center py-5 d-none">
+                            <i class="fa-solid fa-search fs-1 text-muted mb-3"></i>
+                            <h4 class="text-secondary fw-bold">No answers found</h4>
+                            <p class="text-muted">Try searching with different keywords, or use the live chat below.</p>
+                        </div>
+                        
+                        <div class="accordion" id="supportFAQ">
+                            <div class="accordion-item faq-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden bg-light-gray">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button fw-bold collapsed bg-light-gray" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        How do I port my number to Stackly?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#supportFAQ">
+                                    <div class="accordion-body text-muted">
+                                        Send an SMS "PORT &lt;your 10-digit mobile number&gt;" to 1900. You will receive a Unique Porting Code (UPC). Share this code with our executive at the nearest Stackly store to get your new SIM.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item faq-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden bg-light-gray">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button fw-bold collapsed bg-light-gray" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        How can I check my data balance?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#supportFAQ">
+                                    <div class="accordion-body text-muted">
+                                        You can dial *121# from your Stackly number, or instantly check your real-time usage and balance on the Stackly Mobile App.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item faq-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden bg-light-gray">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button fw-bold collapsed bg-light-gray" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        How do I activate International Roaming?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#supportFAQ">
+                                    <div class="accordion-body text-muted">
+                                        International roaming can be activated via the Stackly App under 'Manage Services'. You can also activate it by purchasing any of our international roaming packs before your travel.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item faq-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden bg-light-gray">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button fw-bold collapsed bg-light-gray" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                        What should I do if my fiber broadband is slow?
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#supportFAQ">
+                                    <div class="accordion-body text-muted">
+                                        First, try restarting your router. If the issue persists, run a speed test on the Stackly app and click "Diagnose Network". Our backend systems will automatically attempt to fix the routing.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item faq-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden bg-light-gray">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button fw-bold collapsed bg-light-gray" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                        Can I upgrade my prepaid plan to postpaid?
+                                    </button>
+                                </h2>
+                                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#supportFAQ">
+                                    <div class="accordion-body text-muted">
+                                        Yes! You can instantly migrate to a postpaid plan without changing your SIM. Just verify your ID on the Stackly app, and the migration happens over the air within 10 minutes.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating Chatbot UI -->
+    <div class="chat-widget-btn" id="chatToggleBtn">
+        <i class="fa-solid fa-comment-dots"></i>
+    </div>
+    
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="d-flex align-items-center gap-3">
+                <div class="bg-primary-custom rounded-circle d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+                    <i class="fa-solid fa-robot text-white"></i>
+                </div>
+                <div>
+                    <h6 class="mb-0 fw-bold">Stacky AI</h6>
+                    <small class="text-white-50">Online</small>
+                </div>
+            </div>
+            <button class="btn btn-link text-white p-0 shadow-none" id="chatCloseBtn"><i class="fa-solid fa-xmark fs-5"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+                <p class="mb-0 text-dark small">Hi there! I'm Stacky, your virtual assistant. How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" class="form-control rounded-pill bg-light border-0" placeholder="Type your message...">
+            <button class="btn btn-primary-custom rounded-circle p-0 d-flex justify-content-center align-items-center" style="width: 45px; height: 40px;"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+        <!-- Modern Footer -->
+    <footer class="pt-5 bg-dark-navy text-white position-relative overflow-hidden mt-auto">
+        <div class="container position-relative z-1">
+            <div class="row g-4 mb-5">
+                <!-- Brand & Newsletter -->
+                <div class="col-lg-4 col-md-6">
+                    <a class="navbar-brand text-white mb-4 d-inline-block" href="index.html">
+                        <img src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top">
+                    </a>
+                    <p class="text-white-50 mb-4 pe-lg-4">Empowering India with next-generation digital connectivity. High-speed 5G, reliable fiber, and enterprise solutions for everyone.</p>
+                    
+                    <h6 class="fw-bold mb-3">Subscribe to Newsletter</h6>
+                    <form id="newsletterForm" class="d-flex gap-2 mb-4 position-relative">
+                        <input type="email" class="form-control border-0 bg-white bg-opacity-10 text-white" style="color: white !important;" placeholder="Email address" required>
+                        <button type="submit" class="btn btn-primary-custom px-3 flex-shrink-0 ripple">
+                            <span class="btn-text"><i class="fa-solid fa-paper-plane"></i></span>
+                            <span class="btn-success d-none"><i class="fa-solid fa-check"></i></span>
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">About Us</a></li>
+                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Careers</a></li>
+                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Investors</a></li>
+                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Press Center</a></li>
+                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Sustainability</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-4">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="recharge.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Prepaid Recharge</a></li>
+                        <li class="mb-2"><a href="plans.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Postpaid Bill</a></li>
+                        <li class="mb-2"><a href="broadband.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Fiber Broadband</a></li>
+                        <li class="mb-2"><a href="business.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Enterprise Solutions</a></li>
+                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Intl Roaming</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact & Socials -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-4">Contact & Support</h5>
+                    <div class="d-flex align-items-start gap-3 mb-3 text-white-50">
+                        <i class="fa-solid fa-headset mt-1 text-primary-custom"></i>
+                        <div>
+                            <div class="small">Toll-Free Support</div>
+                            <div class="fw-bold text-white">1800-123-4567</div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start gap-3 mb-4 text-white-50">
+                        <i class="fa-solid fa-envelope mt-1 text-primary-custom"></i>
+                        <div>
+                            <div class="small">Email Assistance</div>
+                            <div class="fw-bold text-white">support@Stackly.com</div>
+                        </div>
+                    </div>
+                    
+                    <h6 class="fw-bold mb-3 mt-4">Follow Us</h6>
+                    <div class="d-flex gap-2">
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright & Legal -->
+            <div class="border-top border-secondary border-opacity-50 pt-4 pb-4 d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="text-white-50 small mb-3 mb-md-0">&copy; 2026 Stackly Telecom. All rights reserved.</p>
+                <div class="d-flex gap-3 small">
+                    <a href="404.html" class="text-white-50 text-decoration-none hover-text-white transition-all">Privacy Policy</a>
+                    <a href="404.html" class="text-white-50 text-decoration-none hover-text-white transition-all">Terms of Service</a>
+                    <a href="404.html" class="text-white-50 text-decoration-none hover-text-white transition-all">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.min.js"></script>
+    <script src="assets/js/animations.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var navbarCollapse = document.getElementById('navbarNav');
+        if (navbarCollapse) {
+            navbarCollapse.addEventListener('show.bs.collapse', function () {
+                document.body.classList.add('no-scroll');
+            });
+            navbarCollapse.addEventListener('hidden.bs.collapse', function () {
+                document.body.classList.remove('no-scroll');
+            });
+            
+            // Close mobile menu on link click
+            var navLinks = navbarCollapse.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (window.getComputedStyle(document.querySelector('.navbar-toggler')).display !== 'none') {
+                        var bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                        if (bsCollapse) bsCollapse.hide();
+                    }
+                });
+            });
+        }
+    });
+</script>
+    <!-- Animation Libraries -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script .min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Chatbot Toggle Logic
+        const chatToggleBtn = document.getElementById('chatToggleBtn');
+        const chatCloseBtn = document.getElementById('chatCloseBtn');
+        const chatWindow = document.getElementById('chatWindow');
+        
+        const toggleChat = () => {
+            chatWindow.classList.toggle('active');
+            if (chatWindow.classList.contains('active')) {
+                chatToggleBtn.querySelector('i').classList.replace('fa-comment-dots', 'fa-chevron-down');
+            } else {
+                chatToggleBtn.querySelector('i').classList.replace('fa-chevron-down', 'fa-comment-dots');
+            }
+        };
+
+        if (chatToggleBtn && chatCloseBtn) {
+            chatToggleBtn.addEventListener('click', toggleChat);
+            chatCloseBtn.addEventListener('click', toggleChat);
+        }
+
+        // Live FAQ Search Logic
+        const searchInput = document.getElementById('faqSearchInput');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const noResults = document.getElementById('faqNoResults');
+        
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                const query = e.target.value.toLowerCase().trim();
+                let hasResults = false;
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.accordion-button').textContent.toLowerCase();
+                    const answer = item.querySelector('.accordion-body').textContent.toLowerCase();
+                    
+                    if (question.includes(query) || answer.includes(query)) {
+                        item.style.display = 'block';
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                if (noResults) {
+                    noResults.classList.toggle('d-none', hasResults);
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
+
+
+

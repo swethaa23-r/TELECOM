@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Team Dashboard | Stackly Telecom</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.min.css?v=1.1">
+    <link rel="stylesheet" href="../assets/css/dashboard.min.css?v=1.1">
+    
+    <style>
+        /* Custom Chat UI for Support Dashboard */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: var(--light);
+            border-radius: 8px;
+        }
+        .chat-bubble {
+            max-width: 75%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        .chat-bubble.agent {
+            background-color: var(--primary);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+        }
+        .chat-bubble.customer {
+            background-color: white;
+            color: var(--dark);
+            align-self: flex-start;
+            margin-right: auto;
+            border-bottom-left-radius: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .chat-time {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: 5px;
+            display: block;
+            text-align: right;
+        }
+        .chat-bubble.customer .chat-time {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Support Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header d-flex align-items-center justify-content-between">
+            <a class="navbar-brand text-white fw-bold m-0" href="../index.html">
+                <img src="../redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top">
+            </a>
+            <button class="btn btn-sm btn-link text-white d-lg-none p-0" id="sidebarCloseBtn"><i class="fa-solid fa-xmark fs-4"></i></button>
+        </div>
+        
+        <div class="p-4 border-bottom border-secondary border-opacity-25">
+            <div class="d-flex align-items-center gap-3">
+                <img src="../assets/images/avatar.png" alt="Profile" class="rounded-circle" style="width: 45px; height: 45px; object-fit: cover;">
+                <div>
+                    <h6 class="mb-0 fw-bold" id="sidebarUserName">Agent</h6>
+                    <small class="text-white-50" id="sidebarUserEmail">agent@stackly.com</small>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul class="nav flex-column" id="dashboardTabs" role="tablist">
+                <li class="nav-item">
+                    <button class="sidebar-link active w-100 bg-transparent text-start border-0 border-start border-4" data-custom-tab="true" data-bs-target="#queue"><i class="fa-solid fa-list-check"></i> Ticket Queue</button>
+                </li>
+                <li class="nav-item">
+                    <button class="sidebar-link w-100 bg-transparent text-start border-0 border-start border-4" data-custom-tab="true" data-bs-target="#chat"><i class="fa-solid fa-headset"></i> Active Chats <span class="badge bg-danger ms-auto">2</span></button>
+                </li>
+                <li class="nav-item">
+                    <button class="sidebar-link w-100 bg-transparent text-start border-0 border-start border-4" data-custom-tab="true" data-bs-target="#kb"><i class="fa-solid fa-book"></i> Knowledge Base</button>
+                </li>
+                <li class="nav-item">
+                    <button class="sidebar-link w-100 bg-transparent text-start border-0 border-start border-4" data-custom-tab="true" data-bs-target="#performance"><i class="fa-solid fa-chart-line"></i> Performance</button>
+                </li>
+                <li class="nav-item">
+                    <button class="sidebar-link w-100 bg-transparent text-start border-0 border-start border-4" data-custom-tab="true" data-bs-target="#settings"><i class="fa-solid fa-gear"></i> Settings</button>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="../login.html" class="sidebar-link text-danger p-0"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="dash-topbar">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light me-3 shadow-sm" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+                <a href="../index.html"><img src="../redlogo.webp" alt="Stackly Logo" height="28" class="d-inline-block align-text-top"></a>
+            </div>
+            
+            <div class="d-flex align-items-center gap-3">
+                <span class="badge bg-success px-3 py-2 rounded-pill"><i class="fa-solid fa-circle text-white me-1" style="font-size: 0.5rem; vertical-align: middle;"></i> Available</span>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="p-4" id="dashboardContainer">
+            <div class="tab-content">
+            
+                <!-- TICKET QUEUE TAB -->
+                <div class="tab-pane fade show active" id="queue">
+                    
+                    <div class="row g-4 mb-4 skeleton-group">
+                        <div class="col-md-4"><div class="skeleton skeleton-box" style="height: 100px;"></div></div>
+                        <div class="col-md-4"><div class="skeleton skeleton-box" style="height: 100px;"></div></div>
+                        <div class="col-md-4"><div class="skeleton skeleton-box" style="height: 100px;"></div></div>
+                    </div>
+                    
+                    <div class="row g-4 mb-4 dash-real-content-flex">
+                        <div class="col-md-4">
+                            <div class="stat-card bg-danger text-white border-0 tilt-card">
+                                <h6>Critical Priority</h6>
+                                <h2 class="fw-bold">12</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-card bg-warning text-dark border-0 tilt-card">
+                                <h6>High Priority</h6>
+                                <h2 class="fw-bold">45</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-card bg-success text-white border-0 tilt-card">
+                                <h6>Resolved Today</h6>
+                                <h2 class="fw-bold">128</h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skeleton skeleton-box mb-4" style="height: 400px;"></div>
+                    <div class="stat-card dash-real-content">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="fw-bold m-0">My Queue</h5>
+                            <div class="d-flex gap-2">
+                                <select class="form-select form-select-sm" style="width: auto;">
+                                    <option>All Statuses</option>
+                                    <option>Open</option>
+                                    <option>Pending</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-custom align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Ticket ID</th>
+                                        <th>Subject</th>
+                                        <th>Customer</th>
+                                        <th>Priority</th>
+                                        <th>Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold text-primary-custom">#TK-1092</td>
+                                        <td>Fiber Router Red Light Issue</td>
+                                        <td>Rahul Verma</td>
+                                        <td><span class="badge bg-danger">Critical</span></td>
+                                        <td class="small text-muted">10 mins ago</td>
+                                        <td><button class="btn btn-sm btn-outline-primary-custom" data-custom-tab="true" data-bs-target="#chat">Take Chat</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-primary-custom">#TK-1088</td>
+                                        <td>5G Speed extremely slow</td>
+                                        <td>Ananya S.</td>
+                                        <td><span class="badge bg-warning text-dark">High</span></td>
+                                        <td class="small text-muted">45 mins ago</td>
+                                        <td><button class="btn btn-sm btn-outline-secondary">View</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-primary-custom">#TK-1075</td>
+                                        <td>Postpaid Bill Discrepancy</td>
+                                        <td>Vikram Singh</td>
+                                        <td><span class="badge bg-info text-dark">Normal</span></td>
+                                        <td class="small text-muted">2 hours ago</td>
+                                        <td><button class="btn btn-sm btn-outline-secondary">View</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHAT TAB -->
+                <div class="tab-pane fade" id="chat">
+                    <div class="row g-4">
+                        <div class="col-lg-4">
+                            <div class="stat-card h-100 p-0 overflow-hidden">
+                                <div class="p-3 bg-light border-bottom">
+                                    <h6 class="fw-bold m-0">Active Sessions</h6>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <a href="../404.html" class="list-group-item list-group-item-action active bg-primary-custom border-primary-custom py-3">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 fw-bold">Rahul Verma</h6>
+                                            <small>10m</small>
+                                        </div>
+                                        <p class="mb-1 small">#TK-1092 - Fiber Router</p>
+                                    </a>
+                                    <a href="../404.html" class="list-group-item list-group-item-action py-3">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1 fw-bold">Neha Kapoor</h6>
+                                            <small class="text-muted">3m</small>
+                                        </div>
+                                        <p class="mb-1 small text-muted">#TK-1099 - SIM Activation</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="stat-card h-100 p-0 d-flex flex-column">
+                                <div class="p-3 border-bottom d-flex justify-content-between align-items-center bg-white">
+                                    <div>
+                                        <h6 class="fw-bold m-0">Rahul Verma</h6>
+                                        <small class="text-muted">Account: +91 9876543210</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-success">Resolve</button>
+                                </div>
+                                
+                                <div class="chat-container">
+                                    <div class="chat-messages d-flex flex-column">
+                                        
+                                        <div class="chat-bubble customer">
+                                            Hi, my Fiber router is showing a solid red light on the 'LOS' indicator and I have no internet.
+                                            <span class="chat-time">10:45 AM</span>
+                                        </div>
+                                        
+                                        <div class="chat-bubble agent">
+                                            Hello Rahul, I apologize for the inconvenience. A red LOS light usually indicates a break in the optical fiber line. Have there been any recent constructions near your home?
+                                            <span class="chat-time">10:47 AM</span>
+                                        </div>
+                                        
+                                        <div class="chat-bubble customer">
+                                            Yes, they are digging up the road right outside my gate since this morning.
+                                            <span class="chat-time">10:48 AM</span>
+                                        </div>
+                                        
+                                        <div class="chat-bubble agent">
+                                            Thank you for confirming. That is likely the cause. I am dispatching a field technician immediately to splice and repair the line. They will be there within 2 hours.
+                                            <span class="chat-time">10:50 AM</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-3 bg-white border-top">
+                                        <div class="input-group">
+                                            <button class="btn btn-light border"><i class="fa-solid fa-paperclip"></i></button>
+                                            <input type="text" class="form-control" placeholder="Type a message...">
+                                            <button class="btn btn-primary-custom"><i class="fa-solid fa-paper-plane"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KB TAB -->
+                <div class="tab-pane fade" id="kb">
+                    <div class="stat-card">
+                        <div class="mb-4">
+                            <h4 class="fw-bold m-0">Knowledge Base</h4>
+                            <p class="text-muted small">Search internal articles and SOPs to resolve issues faster.</p>
+                        </div>
+                        <div class="input-group mb-4">
+                            <span class="input-group-text bg-white"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                            <input type="text" class="form-control" placeholder="Search by topic, error code, or keyword...">
+                            <button class="btn btn-primary-custom">Search</button>
+                        </div>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="p-3 border rounded h-100 bg-light">
+                                    <h6 class="fw-bold text-primary-custom"><i class="fa-solid fa-file-lines me-2"></i> Router Red Light (LOS) SOP</h6>
+                                    <p class="small text-muted mb-2">Standard operating procedure for diagnosing optical fiber breakages.</p>
+                                    <a href="../404.html" class="small text-decoration-none fw-bold">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3 border rounded h-100 bg-light">
+                                    <h6 class="fw-bold text-primary-custom"><i class="fa-solid fa-file-lines me-2"></i> 5G SIM Activation Steps</h6>
+                                    <p class="small text-muted mb-2">How to manually force-activate a 5G profile on an existing 4G SIM.</p>
+                                    <a href="../404.html" class="small text-decoration-none fw-bold">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PERFORMANCE TAB -->
+                <div class="tab-pane fade" id="performance">
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="stat-card border-0 tilt-card text-center">
+                                <h6>Avg Handling Time (AHT)</h6>
+                                <h2 class="fw-bold text-primary">3m 42s</h2>
+                                <span class="badge bg-success-subtle text-success">-12s vs last week</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-card border-0 tilt-card text-center">
+                                <h6>Customer Satisfaction (CSAT)</h6>
+                                <h2 class="fw-bold text-success">4.8 / 5</h2>
+                                <span class="badge bg-success-subtle text-success">Excellent</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-card border-0 tilt-card text-center">
+                                <h6>Resolution Rate</h6>
+                                <h2 class="fw-bold text-warning">94%</h2>
+                                <span class="badge bg-warning-subtle text-warning">Target: 95%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="stat-card" style="height: 350px;">
+                                <h5 class="fw-bold mb-4">Ticket Resolution Breakdown</h5>
+                                <div style="height: 250px;">
+                                    <canvas id="resolutionChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS TAB -->
+                <div class="tab-pane fade" id="settings">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="stat-card h-100">
+                                <h5 class="fw-bold mb-4">Agent Status</h5>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="autoAssignToggle" checked>
+                                    <label class="form-check-label" for="autoAssignToggle">Accept auto-assigned tickets</label>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small text-muted">Availability Status</label>
+                                    <select class="form-select">
+                                        <option value="online">Online / Available</option>
+                                        <option value="busy">Busy / In a call</option>
+                                        <option value="away">Away / Break</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary-custom btn-sm">Update Status</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="stat-card h-100">
+                                <h5 class="fw-bold mb-4">Quick Replies (Canned Responses)</h5>
+                                <ul class="list-group list-group-flush mb-3">
+                                    <li class="list-group-item px-0"><small class="fw-bold">/hello</small><br><small class="text-muted">Hello, thank you for contacting Stackly Support. How can I help you today?</small></li>
+                                    <li class="list-group-item px-0"><small class="fw-bold">/apology</small><br><small class="text-muted">I sincerely apologize for the inconvenience this has caused.</small></li>
+                                </ul>
+                                <button class="btn btn-sm btn-outline-primary-custom"><i class="fa-solid fa-plus me-1"></i> Add Quick Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/dashboard.min.js?v=1.1"></script>
+    
+    <script>
+        document.querySelectorAll('button[data-custom-tab="true"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-bs-target');
+                document.querySelectorAll('.sidebar-link').forEach(b => b.classList.remove('active'));
+                
+                // Add active to the clicked button (or equivalent in sidebar if clicked from table)
+                if(this.classList.contains('sidebar-link')) {
+                    this.classList.add('active');
+                } else {
+                    document.querySelector('.sidebar-link[data-bs-target="'+targetId+'"]').classList.add('active');
+                }
+                
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('show', 'active'));
+                document.querySelector(targetId).classList.add('show', 'active');
+                
+                const sidebar = document.getElementById('sidebar');
+                if(sidebar.classList.contains('show')) {
+                    sidebar.classList.remove('show');
+                    document.getElementById('sidebarOverlay').classList.remove('show');
+                }
+            });
+        });
+
+        // Initialize Support Dashboard
+        window.initSupportCharts = function() {
+            // Resolution Donut Chart
+            const resCtx = document.getElementById('resolutionChart');
+            if (resCtx) {
+                new Chart(resCtx.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Network Issue', 'Billing Inquiry', 'Plan Upgrade', 'Hardware'],
+                        datasets: [{
+                            data: [45, 30, 15, 10],
+                            backgroundColor: ['#e50914', '#0a1128', '#198754', '#f8c102'],
+                            borderWidth: 0,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '75%',
+                        plugins: {
+                            legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } }
+                        }
+                    }
+                });
+            }
+        };
+        
+        // Wait for skeleton removal to init charts if dash-real-content is hidden
+        // For support team, we initialize immediately since performance tab might not have a skeleton
+        setTimeout(() => {
+            if(typeof initSupportCharts === 'function') initSupportCharts();
+        }, 100);
+        
+        document.getElementById('sidebarCloseBtn').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('show');
+            document.getElementById('sidebarOverlay').classList.remove('show');
+            document.body.classList.remove('sidebar-open');
+        });
+
+        // Dynamic User Name from localStorage
+        (function() {
+            const userName = localStorage.getItem('stacklyUserName');
+            const userEmail = localStorage.getItem('stacklyUserEmail');
+            if (userName) document.getElementById('sidebarUserName').textContent = userName;
+            if (userEmail) document.getElementById('sidebarUserEmail').textContent = userEmail;
+        })();
+    </script>
+</body>
+</html>
