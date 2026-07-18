@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Navbar Sticky Effect
+    // 3. Navbar Sticky Effect & Mobile Menu Logic
     const navbar = document.querySelector('.navbar-custom');
     if (navbar) {
         window.addEventListener('scroll', () => {
@@ -34,6 +34,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 navbar.classList.remove('scrolled');
             }
         });
+
+        const navbarCollapse = document.getElementById('navbarNav');
+        if (navbarCollapse) {
+            // Prevent background scrolling when menu is open
+            navbarCollapse.addEventListener('show.bs.collapse', () => {
+                document.body.classList.add('no-scroll');
+            });
+            navbarCollapse.addEventListener('hide.bs.collapse', () => {
+                document.body.classList.remove('no-scroll');
+            });
+
+            // Close mobile menu automatically after selecting a menu item
+            const navLinks = navbarCollapse.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                        if (bsCollapse) {
+                            bsCollapse.hide();
+                        } else {
+                            document.querySelector('.navbar-toggler').click();
+                        }
+                    }
+                });
+            });
+        }
     }
 
     // 4. Initialize AOS (Animate On Scroll)
@@ -72,64 +98,70 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. Animated Counters
-    const counters = document.querySelectorAll('.counter-val');
-    if (counters.length > 0) {
-        const observerOptions = {
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-                    const endVal = parseFloat(target.getAttribute('data-target'));
-                    const duration = 2000;
-                    const stepTime = Math.abs(Math.floor(duration / endVal)) || 10;
-                    let currentVal = 0;
-                    
-                    const isDecimal = target.getAttribute('data-target').includes('.');
-                    
-                    const timer = setInterval(() => {
-                        currentVal += (endVal / (duration / stepTime));
-                        if (currentVal >= endVal) {
-                            currentVal = endVal;
-                            clearInterval(timer);
-                        }
-                        target.textContent = isDecimal ? currentVal.toFixed(1) : Math.floor(currentVal);
-                    }, stepTime);
-                    
-                    observer.unobserve(target);
+    // 6. Page Transitions
+    document.body.classList.add('page-loaded');
+    const links = document.querySelectorAll('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="mailto:"]):not([href^="tel:"])');
+    links.forEach(link => {
+        link.addEventListener('click', e => {
+            if (link.hostname === window.location.hostname && link.pathname !== window.location.pathname) {
+                e.preventDefault();
+                const targetUrl = link.href;
+                let overlay = document.querySelector('.page-transition-overlay');
+                if (!overlay) {
+                    overlay = document.createElement('div');
+                    overlay.className = 'page-transition-overlay';
+                    document.body.appendChild(overlay);
                 }
-            });
-        }, observerOptions);
-
-        counters.forEach(counter => {
-            observer.observe(counter);
+                setTimeout(() => { overlay.classList.add('active'); }, 10);
+                setTimeout(() => { window.location.href = targetUrl; }, 400);
+            }
         });
-    }
+    });
 });
 
 // GSAP Animations Initialization
 function initGSAPAnimations() {
-    if (typeof gsap !== 'undefined') {
-        // Hero Section Animations
-        const heroTitle = document.querySelector('.hero-title');
-        const heroSubtitle = document.querySelector('.hero-subtitle');
-        const heroBtns = document.querySelector('.hero-btns');
-        const heroMockup = document.querySelector('.hero-mockup-wrapper');
+    if (typeof gsap === 'undefined') return;
+    if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
-        if (heroTitle) {
-            gsap.from(heroTitle, { y: 50, opacity: 0, duration: 1, ease: "power3.out" });
-        }
-        if (heroSubtitle) {
-            gsap.from(heroSubtitle, { y: 30, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out" });
-        }
-        if (heroBtns) {
-            gsap.from(heroBtns, { y: 20, opacity: 0, duration: 1, delay: 0.4, ease: "power3.out" });
-        }
-        if (heroMockup) {
-            gsap.from(heroMockup, { x: 100, opacity: 0, duration: 1.5, delay: 0.5, ease: "elastic.out(1, 0.5)" });
+    // Hero Section Animations
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const heroBtns = document.querySelector('.hero-btns');
+    const heroMockup = document.querySelector('.hero-mockup-wrapper');
+
+    if (heroTitle) gsap.fromTo(heroTitle, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", clearProps: "all" });
+    if (heroSubtitle) gsap.fromTo(heroSubtitle, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 0.1, ease: "power2.out", clearProps: "all" });
+    if (heroBtns) gsap.fromTo(heroBtns, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 0.2, ease: "power2.out", clearProps: "all" });
+    if (heroMockup) gsap.fromTo(heroMockup, { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, delay: 0.3, ease: "back.out(1.2)", clearProps: "all" });
+
+    // Animated Counters
+    const counters = document.querySelectorAll('.counter-val');
+    counters.forEach(counter => {
+        const endVal = parseFloat(counter.getAttribute('data-target'));
+        const isDecimal = counter.getAttribute('data-target').includes('.');
+        gsap.to(counter, {
+            scrollTrigger: { trigger: counter, start: "top 90%", once: true },
+            innerHTML: endVal,
+            duration: 1.5,
+            snap: { innerHTML: isDecimal ? 0.1 : 1 },
+            onUpdate: function() {
+                counter.innerHTML = isDecimal ? Number(this.targets()[0].innerHTML).toFixed(1) : Math.floor(Number(this.targets()[0].innerHTML));
+            }
+        });
+    });
+
+    // Staggered Cards
+    if (typeof ScrollTrigger !== 'undefined') {
+
+
+        // Hero Parallax
+        const parallaxBg = document.querySelector('.position-absolute[style*="background: url"]');
+        if (parallaxBg && parallaxBg.parentElement) {
+            gsap.to(parallaxBg, {
+                scrollTrigger: { trigger: parallaxBg.parentElement, start: "top top", end: "bottom top", scrub: 1 },
+                y: 100, ease: "none"
+            });
         }
     }
 }
@@ -254,32 +286,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof gsap !== 'undefined') {
-        gsap.from('.float-btn-wrapper', {
-            y: 40,
-            opacity: 0,
-            duration: 1.2,
-            stagger: 0.2,
-            ease: 'back.out(1.5)',
-            delay: 0.2,
-            clearProps: 'all' // Allows CSS floating animations to take over after entrance
-        });
-    }
-});
+
 
 // Premium Preloader Animation
 document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.querySelector('.premium-preloader');
     if (preloader && typeof gsap !== 'undefined') {
         // Prevent scrolling while preloader is active
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-scroll');
+        
+        // Hide header and page content initially
+        gsap.set('header, main, footer', { opacity: 0 });
         
         const tl = gsap.timeline({
             onComplete: () => {
                 // Remove preloader from DOM and allow scrolling
                 preloader.style.display = 'none';
-                document.body.style.overflow = '';
+                document.body.classList.remove('no-scroll');
             }
         });
 
@@ -304,8 +327,62 @@ document.addEventListener('DOMContentLoaded', function() {
         tl.to('.preloader-title', { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.2');
         tl.to('.preloader-subtitle', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.4');
 
-        // 5. Preloader fades out
-        tl.to(preloader, { opacity: 0, duration: 0.8, ease: 'power2.inOut', delay: 0.5 });
+        // 5. Preloader fades out and sections reveal sequentially
+        tl.to(preloader, { opacity: 0, duration: 0.8, ease: 'power2.inOut', delay: 0.5 })
+          .to('header', { opacity: 1, duration: 0.6, ease: 'power2.out' }, "-=0.2")
+          .to('.hero-section, main > section:first-child', { opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=0.3")
+          .to('main, footer', { opacity: 1, duration: 0.6, ease: 'power2.out' }, "-=0.2");
     }
+
+    // Automatically set active navigation link
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinksList = document.querySelectorAll('.nav-link-custom');
+    navLinksList.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+});
+
+
+// Dynamic Link Validator (404 Fallback)
+document.addEventListener('DOMContentLoaded', () => {
+    const validPages = [
+        '404.html', 'about.html', 'broadband.html', 'business.html', 
+        'contact.html', 'index.html', 'login.html', 'plans.html', 
+        'recharge.html', 'signup.html', 'support.html'
+    ];
+
+    document.querySelectorAll('a').forEach(link => {
+        const href = link.getAttribute('href');
+        
+        // If it's a completely empty link or just a placeholder #
+        if (!href || href === '#') {
+            link.setAttribute('href', '404.html');
+            return;
+        }
+
+        // Ignore external links, emails, phones, JS, or valid ID anchors (e.g., #collapseOne)
+        if (href.startsWith('http') || href.startsWith('mailto:') || 
+            href.startsWith('tel:') || href.startsWith('javascript:') || 
+            (href.startsWith('#') && href.length > 1)) {
+            return;
+        }
+
+        // Get the base filename without hash or query params
+        const basePath = href.split('?')[0].split('#')[0];
+        
+        // If the href is an HTML file and it's not in our list of valid pages, point to 404
+        if (basePath && basePath.endsWith('.html') && !validPages.includes(basePath)) {
+            link.setAttribute('href', '404.html');
+        }
+        
+        // If it's a relative link to a non-file (like a folder) that isn't root
+        if (basePath && !basePath.endsWith('.html') && !basePath.endsWith('/') && !basePath.includes('.')) {
+            link.setAttribute('href', '404.html');
+        }
+    });
 });
 

@@ -1,4 +1,4 @@
-﻿// Custom Form Validation and Handling
+// Custom Form Validation and Handling
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
@@ -18,25 +18,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Show a simple success alert for demo purposes
                 const btn = form.querySelector('button[type="submit"]');
-                const originalText = btn.innerHTML;
-                
-                btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Processing...';
-                btn.disabled = true;
-                
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Success!';
-                    btn.classList.remove('btn-primary-custom');
-                    btn.classList.add('btn-success');
+                if (btn) {
+                    const originalText = btn.innerHTML;
+                    
+                    btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Processing...';
+                    btn.disabled = true;
                     
                     setTimeout(() => {
-                        btn.innerHTML = originalText;
-                        btn.classList.add('btn-primary-custom');
-                        btn.classList.remove('btn-success');
-                        btn.disabled = false;
-                        form.reset();
-                        form.classList.remove('was-validated');
-                    }, 3000);
-                }, 1500);
+                        btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Success!';
+                        btn.classList.remove('btn-primary-custom');
+                        btn.classList.add('btn-success');
+                        
+                        setTimeout(() => {
+                            const actionUrl = form.getAttribute('action') || '404.html';
+                            window.location.href = actionUrl;
+                        }, 500);
+                    }, 1000);
+                } else {
+                    const actionUrl = form.getAttribute('action') || '404.html';
+                    window.location.href = actionUrl;
+                }
             }
 
             form.classList.add('was-validated');
