@@ -25,21 +25,21 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav align-items-center">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto ms-lg-2 align-items-center">
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="recharge.html">Recharge</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="plans.html">Plans</a></li>
-                        <li class="nav-item"><a class="nav-link nav-link-custom" href="broadband.html" class="nav-link nav-link-custom active">Broadband</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom active" href="broadband.html">Broadband</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="business.html">Business</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="support.html">Support</a></li>
-                        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                            <a href="login.html" class="btn btn-outline-custom me-2 ripple">Login</a>
-                            <a href="signup.html" class="btn btn-primary-custom ripple">Sign Up</a>
-                        </li>
                     </ul>
+                    <div class="d-flex align-items-center mt-3 mt-lg-0 justify-content-center">
+                        <a href="login.html" class="btn btn-outline-custom me-2 ripple">Login</a>
+                        <a href="signup.html" class="btn btn-primary-custom ripple">Sign Up</a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -365,87 +365,79 @@
 
     </main>
 
-    <!-- Footer -->
-        <!-- Modern Footer -->
-    <footer class="pt-5 bg-dark-navy text-white position-relative overflow-hidden mt-auto">
-        <div class="container position-relative z-1">
+                <!-- Footer -->
+    <footer class="footer-custom pt-5">
+        <div class="container">
             <div class="row g-4 mb-5">
-                <!-- Brand & Newsletter -->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <a class="navbar-brand text-white mb-4 d-inline-block" href="index.html">
-                        <img src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top">
-                    </a>
-                    <p class="text-white-50 mb-4 pe-lg-4">Empowering India with next-generation digital connectivity. High-speed 5G, reliable fiber, and enterprise solutions for everyone.</p>
-                    
-                    <h6 class="fw-bold mb-3">Subscribe to Newsletter</h6>
-                    <form id="newsletterForm" class="d-flex gap-2 mb-4 position-relative">
-                        <input type="email" class="form-control border-0 bg-white bg-opacity-10 text-white" style="color: white !important;" placeholder="Email address" required>
-                        <button type="submit" class="btn btn-primary-custom px-3 flex-shrink-0 ripple">
-                            <span class="btn-text"><i class="fa-solid fa-paper-plane"></i></span>
-                            <span class="btn-success d-none"><i class="fa-solid fa-check"></i></span>
-                        </button>
-                    </form>
+                        <img src="redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top"></a>
+                    <p class="text-white-50 mb-4 pe-lg-5">Empowering India with next-generation digital connectivity. High-speed 5G, reliable fiber, and enterprise solutions for everyone.</p>
+                    <div class="d-flex gap-3">
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
                 </div>
                 
-                <!-- Quick Links -->
                 <div class="col-lg-2 col-md-6">
-                    <h5 class="fw-bold mb-4">Quick Links</h5>
+                    <h5 class="footer-title">Services</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">About Us</a></li>
-                        <li class="mb-2"><a href="plans.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Plans</a></li>
-                        <li class="mb-2"><a href="recharge.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Recharge</a></li>
-                        <li class="mb-2"><a href="broadband.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Broadband</a></li>
-                        <li class="mb-2"><a href="business.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Business</a></li>
+                        <li><a href="recharge.html" class="text-white-50 text-decoration-none footer-link">Prepaid Recharge</a></li>
+                        <li><a href="plans.html" class="text-white-50 text-decoration-none footer-link">Postpaid Bill</a></li>
+                        <li><a href="broadband.html" class="text-white-50 text-decoration-none footer-link">Fiber Broadband</a></li>
+                        <li><a href="business.html" class="text-white-50 text-decoration-none footer-link">Enterprise Solutions</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none footer-link">International Roaming</a></li>
                     </ul>
                 </div>
                 
-                <!-- Services -->
                 <div class="col-lg-2 col-md-6">
-                    <h5 class="fw-bold mb-4">Services</h5>
+                    <h5 class="footer-title">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="recharge.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Prepaid Recharge</a></li>
-                        <li class="mb-2"><a href="plans.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Postpaid Bill</a></li>
-                        <li class="mb-2"><a href="broadband.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Fiber Broadband</a></li>
-                        <li class="mb-2"><a href="business.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Enterprise Solutions</a></li>
-                        <li class="mb-2"><a href="404.html" class="text-white-50 text-decoration-none hover-text-white footer-link transition-all">Intl Roaming</a></li>
+                        <li><a href="about.html" class="text-white-50 text-decoration-none footer-link">About Us</a></li>
+                        <li><a href="plans.html" class="text-white-50 text-decoration-none footer-link">Plans</a></li>
+                        <li><a href="recharge.html" class="text-white-50 text-decoration-none footer-link">Recharge</a></li>
+                        <li><a href="broadband.html" class="text-white-50 text-decoration-none footer-link">Broadband</a></li>
+                        <li><a href="business.html" class="text-white-50 text-decoration-none footer-link">Business</a></li>
                     </ul>
                 </div>
                 
-                <!-- Contact & Socials -->
-                <div class="col-lg-4 col-md-6">
-                    <h5 class="fw-bold mb-4">Contact & Support</h5>
-                    <div class="d-flex align-items-start gap-3 mb-3 text-white-50">
-                        <i class="fa-solid fa-headset mt-1 text-primary-custom"></i>
-                        <div>
-                            <div class="small">Toll-Free Support</div>
-                            <div class="fw-bold text-white">1800-123-4567</div>
+                <div class="col-lg-5 col-md-6">
+                    <h5 class="footer-title">Support & Location</h5>
+                    <div class="d-flex flex-wrap flex-lg-nowrap gap-4 align-items-start mt-3">
+                        <div class="contact-info flex-shrink-0">
+                            <div class="d-flex align-items-center gap-3 mb-3 text-white-50">
+                                <i class="fa-solid fa-headset fs-4 text-primary-custom"></i>
+                                <div>
+                                    <div class="small">Call us toll-free</div>
+                                    <div class="fw-bold text-white">1800-123-4567</div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3 mb-4 text-white-50">
+                                <i class="fa-solid fa-envelope fs-4 text-primary-custom"></i>
+                                <div>
+                                    <div class="small">Email us</div>
+                                    <div class="fw-bold text-white">support@Stackly.com</div>
+                                </div>
+                            </div>
+                            <a href="support.html" class="btn btn-primary-custom btn-sm rounded-pill px-4">Help Center</a>
                         </div>
-                    </div>
-                    <div class="d-flex align-items-start gap-3 mb-4 text-white-50">
-                        <i class="fa-solid fa-envelope mt-1 text-primary-custom"></i>
-                        <div>
-                            <div class="small">Email Assistance</div>
-                            <div class="fw-bold text-white">support@Stackly.com</div>
+                        <div class="map-container w-100 flex-grow-1">
+                            <div class="rounded overflow-hidden shadow-sm h-100" style="min-height: 150px;">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.3486307775825!2d78.1633513152865!3d11.666673891720888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf1c3c9c9b103%3A0x803cb1b0cb503028!2sChinna%20Thirupathi%2C%20Salem%2C%20Tamil%20Nadu%20636008!5e0!3m2!1sen!2sin!4v1684305849887!5m2!1sen!2sin" width="100%" height="100%" style="border:0; min-height: 150px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <h6 class="fw-bold mb-3 mt-4">Follow Us</h6>
-                    <div class="d-flex gap-2">
-                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 36px; height: 36px;"><i class="fa-brands fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
             
-            <!-- Copyright & Legal -->
-            <div class="border-top border-secondary border-opacity-50 pt-4 pb-4 d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center">
                 <p class="text-white-50 small mb-3 mb-md-0">&copy; 2026 Stackly Telecom. All rights reserved.</p>
                 <div class="d-flex gap-3 small">
-                    <a href="404.html" class="text-white-50 text-decoration-none hover-text-white transition-all">Privacy Policy</a>
-                    <a href="404.html" class="text-white-50 text-decoration-none hover-text-white transition-all">Terms of Service</a>
-                    <a href="404.html" class="text-white-50 text-decoration-none hover-text-white transition-all">Sitemap</a>
+                    <a href="#" class="text-white-50 text-decoration-none hover-text-white">Privacy Policy</a>
+                    <a href="#" class="text-white-50 text-decoration-none hover-text-white">Terms of Service</a>
+                    <a href="#" class="text-white-50 text-decoration-none hover-text-white">Sitemap</a>
                 </div>
             </div>
         </div>

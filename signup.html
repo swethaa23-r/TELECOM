@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -84,6 +84,12 @@
         }
         .toggle-password:hover {
             color: var(--primary-red) !important;
+        }
+        
+        /* Hide default browser eye icon */
+        input[type="password"]::-ms-reveal,
+        input[type="password"]::-ms-clear {
+            display: none;
         }
     </style>
 </head>
@@ -237,9 +243,9 @@
                     btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Creating Account...';
                     btn.disabled = true;
                     
-                    const role = document.getElementById('signupRole').value;
                     setTimeout(() => {
-                        window.location.href = dashboards/ + role + .html;
+                        alert("Account created successfully");
+                        window.location.href = "login.html";
                     }, 1500);
                 }
             }, false);

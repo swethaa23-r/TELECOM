@@ -54,21 +54,21 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav align-items-center">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto ms-lg-2 align-items-center">
                         <li class="nav-item"><a class="nav-link nav-link-custom active" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="recharge.html">Recharge</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="plans.html">Plans</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="broadband.html">Broadband</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="business.html">Business</a></li>
-                          <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
-                          <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="support.html">Support</a></li>
-                        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                            <a href="login.html" class="btn btn-outline-custom me-2 ripple">Login</a>
-                            <a href="signup.html" class="btn btn-primary-custom ripple">Sign Up</a>
-                        </li>
                     </ul>
+                    <div class="d-flex align-items-center mt-3 mt-lg-0 justify-content-center">
+                        <a href="login.html" class="btn btn-outline-custom me-2 ripple">Login</a>
+                        <a href="signup.html" class="btn btn-primary-custom ripple">Sign Up</a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -683,11 +683,11 @@
 
     </main>
 
-    <!-- Footer -->
+            <!-- Footer -->
     <footer class="footer-custom pt-5">
         <div class="container">
             <div class="row g-4 mb-5">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <a class="navbar-brand text-white mb-4 d-inline-block" href="index.html">
                         <img src="redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top"></a>
                     <p class="text-white-50 mb-4 pe-lg-5">Empowering India with next-generation digital connectivity. High-speed 5G, reliable fiber, and enterprise solutions for everyone.</p>
@@ -721,23 +721,32 @@
                     </ul>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
-                    <h5 class="footer-title">Support</h5>
-                    <div class="d-flex align-items-center gap-3 mb-3 text-white-50">
-                        <i class="fa-solid fa-headset fs-4 text-primary-custom"></i>
-                        <div>
-                            <div class="small">Call us toll-free</div>
-                            <div class="fw-bold text-white">1800-123-4567</div>
+                <div class="col-lg-5 col-md-6">
+                    <h5 class="footer-title">Support & Location</h5>
+                    <div class="d-flex flex-wrap flex-lg-nowrap gap-4 align-items-start mt-3">
+                        <div class="contact-info flex-shrink-0">
+                            <div class="d-flex align-items-center gap-3 mb-3 text-white-50">
+                                <i class="fa-solid fa-headset fs-4 text-primary-custom"></i>
+                                <div>
+                                    <div class="small">Call us toll-free</div>
+                                    <div class="fw-bold text-white">1800-123-4567</div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3 mb-4 text-white-50">
+                                <i class="fa-solid fa-envelope fs-4 text-primary-custom"></i>
+                                <div>
+                                    <div class="small">Email us</div>
+                                    <div class="fw-bold text-white">support@Stackly.com</div>
+                                </div>
+                            </div>
+                            <a href="support.html" class="btn btn-primary-custom btn-sm rounded-pill px-4">Help Center</a>
+                        </div>
+                        <div class="map-container w-100 flex-grow-1">
+                            <div class="rounded overflow-hidden shadow-sm h-100" style="min-height: 150px;">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.3486307775825!2d78.1633513152865!3d11.666673891720888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf1c3c9c9b103%3A0x803cb1b0cb503028!2sChinna%20Thirupathi%2C%20Salem%2C%20Tamil%20Nadu%20636008!5e0!3m2!1sen!2sin!4v1684305849887!5m2!1sen!2sin" width="100%" height="100%" style="border:0; min-height: 150px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center gap-3 mb-4 text-white-50">
-                        <i class="fa-solid fa-envelope fs-4 text-primary-custom"></i>
-                        <div>
-                            <div class="small">Email us</div>
-                            <div class="fw-bold text-white">support@Stackly.com</div>
-                        </div>
-                    </div>
-                    <a href="support.html" class="btn btn-primary-custom btn-sm rounded-pill px-4">Help Center</a>
                 </div>
             </div>
             
@@ -767,15 +776,3 @@
     <script src="assets/js/main.js?v=1.1"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

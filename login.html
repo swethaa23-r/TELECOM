@@ -85,6 +85,12 @@
         .toggle-password:hover {
             color: var(--primary-red) !important;
         }
+        
+        /* Hide default browser eye icon */
+        input[type="password"]::-ms-reveal,
+        input[type="password"]::-ms-clear {
+            display: none;
+        }
     </style>
 </head>
 <body class="auth-bg d-flex align-items-center justify-content-center">
