@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Loop over them and prevent submission
     Array.from(forms).forEach(form => {
+        // Skip forms that have custom JS submit handlers
+        if (form.id === 'loginForm' || form.id === 'signupForm') {
+            return;
+        }
+
         form.addEventListener('submit', event => {
             if (!form.checkValidity()) {
                 event.preventDefault();
