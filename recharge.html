@@ -22,7 +22,7 @@
 
     <!-- Header / Navbar -->
     <header>
-                <nav class="navbar navbar-expand-xl navbar-custom">
+                <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <img loading="lazy" src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"></a>
@@ -30,15 +30,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto ms-lg-2 align-items-center">
+                    <ul class="navbar-nav mx-auto align-items-center">
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom active" href="recharge.html">Recharge</a></li>
-                        <li class="nav-item"><a class="nav-link nav-link-custom" href="plans.html">Plans</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="broadband.html">Broadband</a></li>
-                        <li class="nav-item"><a class="nav-link nav-link-custom" href="business.html">Business</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link nav-link-custom" href="support.html">Support</a></li>
                     </ul>
                     <div class="d-flex align-items-center mt-3 mt-lg-0 justify-content-center">
                         <a href="login.html" class="btn btn-outline-custom me-2 ripple">Login</a>
@@ -604,7 +601,288 @@
             </div>
         </section>
 
-    </main>
+    
+
+<section class="section-padding">
+            <div class="container">
+                                <div class="d-flex justify-content-center align-items-center mb-4" data-aos="fade-up">
+                    <span class="fw-bold me-3 text-secondary">Monthly</span>
+                    <div class="form-check form-switch" style="transform: scale(1.5);">
+                        <input class="form-check-input shadow-none cursor-pointer" type="checkbox" id="planToggle" style="background-color: var(--primary); border-color: var(--primary);">
+                    </div>
+                    <span class="fw-bold ms-2 text-dark-navy">Yearly <span class="badge bg-success rounded-pill ms-1" style="font-size: 0.6rem;">Save 20%</span></span>
+                </div>
+                <ul class="nav nav-pills justify-content-center mb-5 gap-2" id="plansTab" role="tablist" data-aos="fade-up">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active rounded-pill px-4" id="prepaid-tab" data-bs-toggle="pill" data-bs-target="#prepaid" type="button" role="tab">Prepaid</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4" id="postpaid-tab" data-bs-toggle="pill" data-bs-target="#postpaid" type="button" role="tab">Postpaid</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4" id="family-tab" data-bs-toggle="pill" data-bs-target="#family" type="button" role="tab">Family Plans</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4" id="roaming-tab" data-bs-toggle="pill" data-bs-target="#roaming" type="button" role="tab">Intl. Roaming</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4" id="broadband-tab" data-bs-toggle="pill" data-bs-target="#broadband" type="button" role="tab">Broadband Plans</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4" id="ott-tab" data-bs-toggle="pill" data-bs-target="#ott" type="button" role="tab">OTT Plans</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="plansTabContent">
+                    <!-- Prepaid Plans -->
+                    <div class="tab-pane fade show active" id="prepaid" role="tabpanel">
+                        <div class="row g-4">
+                            <!-- Plan 1 -->
+                            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                                <div class="premium-card text-center d-flex flex-column h-100">
+                                    <div class="text-muted fw-semibold mb-2 text-uppercase">1.5GB/Day Pack</div>
+                                    <h3 class="display-5 fw-bold text-dark-navy mb-4">299</h3>
+                                    
+                                    <ul class="list-unstyled text-start mb-4 flex-grow-1">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 1.5 GB/Day High Speed Data</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Unlimited Voice Calls</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 100 SMS/Day</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 28 Days Validity</li>
+                                    </ul>
+                                    <a href="recharge.html" class="btn btn-outline-custom w-100 mt-auto">Recharge</a>
+                                </div>
+                            </div>
+                                                        <!-- Plan 2 -->
+                            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                                <div class="premium-card text-center d-flex flex-column h-100 hover-lift hover-tilt" style="border: 2px solid var(--primary); transform: scale(1.05); box-shadow: 0 15px 30px rgba(227,6,19,0.15) !important;">
+                                    <div class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-primary-gradient px-3 py-2 z-3" style="font-size: 0.8rem; letter-spacing: 1px;">RECOMMENDED</div>
+                                    <div class="text-muted fw-semibold mb-2 text-uppercase">Annual Pack</div>
+                                    <h3 class="display-5 fw-bold text-dark-navy mb-4">2999</h3>
+                                    
+                                    <ul class="list-unstyled text-start mb-4 flex-grow-1">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 2.5 GB/Day High Speed Data</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Unlimited Voice Calls</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Prime Video Mobile Edition</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 365 Days Validity</li>
+                                    </ul>
+                                    <a href="recharge.html" class="btn btn-outline-custom w-100 mt-auto">Recharge</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Postpaid Plans -->
+                    <div class="tab-pane fade" id="postpaid" role="tabpanel">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="premium-card text-center d-flex flex-column h-100">
+                                    <div class="text-muted fw-semibold mb-2 text-uppercase">Individual Postpaid</div>
+                                    <h3 class="display-5 fw-bold text-dark-navy mb-4">399<small class="fs-6 text-muted">/mo</small></h3>
+                                    <ul class="list-unstyled text-start mb-4 flex-grow-1">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 75 GB Total Data</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 200 GB Data Rollover</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Unlimited Calls</li>
+                                    </ul>
+                                    <a href="recharge.html" class="btn btn-outline-custom w-100 mt-auto">Buy Now</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="premium-card text-center bg-dark text-white border-0 d-flex flex-column h-100">
+                                    <div class="text-white-50 fw-semibold mb-2 text-uppercase">Platinum Postpaid</div>
+                                    <h3 class="display-5 fw-bold mb-4">999<small class="fs-6 text-white-50">/mo</small></h3>
+                                    <ul class="list-unstyled text-start mb-4 flex-grow-1">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Unlimited 5G Data</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Netflix Basic + Prime + Hotstar</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Unlimited Calls</li>
+                                    </ul>
+                                    <a href="recharge.html" class="btn btn-primary-custom w-100 mt-auto">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Family Plans -->
+                    <div class="tab-pane fade" id="family" role="tabpanel">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="premium-card p-5 text-center bg-animated-gradient text-white border-0 tilt-card">
+                                    <i class="fa-solid fa-users fs-1 mb-3"></i>
+                                    <h3 class="fw-bold mb-3">Stackly Family Plan</h3>
+                                    <p class="lead mb-4">One Bill. Unlimited Benefits for 4 family members.</p>
+                                    <h2 class="display-4 fw-bold mb-4">1499<small class="fs-6 text-white-50">/mo</small></h2>
+                                    <ul class="list-inline mb-5">
+                                        <li class="list-inline-item px-3"><i class="fa-solid fa-wifi mb-2 d-block fs-4"></i>Unlimited 5G Data</li>
+                                        <li class="list-inline-item px-3"><i class="fa-solid fa-phone mb-2 d-block fs-4"></i>Unlimited Calls</li>
+                                        <li class="list-inline-item px-3"><i class="fa-solid fa-tv mb-2 d-block fs-4"></i>All Premium OTTs</li>
+                                    </ul>
+                                    <a href="recharge.html" class="btn btn-light text-primary-custom rounded-pill fw-bold px-5 py-3 shadow">Get Family Plan</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Roaming -->
+                    <div class="tab-pane fade" id="roaming" role="tabpanel">
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="premium-card p-4">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <i class="fa-solid fa-plane-departure fs-3 text-primary-custom"></i>
+                                        <h4 class="fw-bold m-0">USA & Canada</h4>
+                                    </div>
+                                    <h3 class="fw-bold text-dark-navy mb-3">2999 <span class="fs-6 text-muted">/ 10 Days</span></h3>
+                                    <ul class="list-unstyled mb-4">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> 5 GB High Speed Data</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> 100 Mins Outgoing Calls to India</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Free Incoming Calls</li>
+                                    </ul>
+                                    <button class="btn btn-outline-custom w-100">Activate Now</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="premium-card p-4">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <i class="fa-solid fa-earth-asia fs-3 text-primary-custom"></i>
+                                        <h4 class="fw-bold m-0">Asia & Middle East</h4>
+                                    </div>
+                                    <h3 class="fw-bold text-dark-navy mb-3">1499 <span class="fs-6 text-muted">/ 7 Days</span></h3>
+                                    <ul class="list-unstyled mb-4">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> 3 GB High Speed Data</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> 50 Mins Outgoing Calls to India</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Free Incoming Calls</li>
+                                    </ul>
+                                    <button class="btn btn-outline-custom w-100">Activate Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Broadband Plans -->
+                    <div class="tab-pane fade" id="broadband" role="tabpanel">
+                        <div class="row justify-content-center g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="premium-card text-center d-flex flex-column h-100">
+                                    <div class="text-muted fw-semibold mb-2 text-uppercase">Basic Fiber</div>
+                                    <h3 class="display-5 fw-bold text-dark-navy mb-4">399<small class="fs-6 text-muted">/mo</small></h3>
+                                    <ul class="list-unstyled text-start mb-4 flex-grow-1">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 30 Mbps Speed</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Unlimited Data</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Free Router</li>
+                                    </ul>
+                                    <a href="recharge.html" class="btn btn-outline-custom w-100 mt-auto">Buy Now</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="premium-card text-center text-white bg-dark border-0 d-flex flex-column h-100">
+                                    <div class="text-white-50 fw-semibold mb-2 text-uppercase">Ultra Fiber</div>
+                                    <h3 class="display-5 fw-bold mb-4">999<small class="fs-6 text-white-50">/mo</small></h3>
+                                    <ul class="list-unstyled text-start mb-4 flex-grow-1">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 300 Mbps Speed</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Unlimited Data</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 14 OTT Apps</li>
+                                    </ul>
+                                    <a href="recharge.html" class="btn btn-primary-custom w-100 mt-auto">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OTT Plans -->
+                    <div class="tab-pane fade" id="ott" role="tabpanel">
+                        <div class="row justify-content-center g-4">
+                            <div class="col-lg-5">
+                                <div class="premium-card p-4 tilt-card bg-animated-gradient text-white border-0">
+                                    <h3 class="fw-bold mb-3">Entertainment Add-on</h3>
+                                    <h2 class="display-5 fw-bold mb-4">149<small class="fs-6 text-white-50">/mo</small></h2>
+                                    <ul class="list-unstyled mb-4">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-white me-2"></i> Netflix Mobile Edition</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-white me-2"></i> Amazon Prime Video</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-white me-2"></i> Disney+ Hotstar</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-white me-2"></i> SonyLIV Premium</li>
+                                    </ul>
+                                    <button class="btn btn-light text-primary-custom w-100 fw-bold">Add to Plan</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="premium-card p-4 tilt-card bg-dark text-white border-0">
+                                    <h3 class="fw-bold mb-3">Sports Add-on</h3>
+                                    <h2 class="display-5 fw-bold mb-4">99<small class="fs-6 text-white-50">/mo</small></h2>
+                                    <ul class="list-unstyled mb-4">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Disney+ Hotstar (Live Sports)</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> SonyLIV (Live Cricket)</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> FanCode Premium</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> JioCinema Premium</li>
+                                    </ul>
+                                    <button class="btn btn-primary-custom w-100 fw-bold">Add to Plan</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section class="section-padding bg-white">
+            <div class="container" data-aos="fade-up">
+                <div class="text-center mb-5">
+                    <h2 class="section-title">Compare Prepaid Plans</h2>
+                    <p class="section-subtitle">Find the exact features you need.</p>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle border text-center">
+                        <thead class="bg-light-gray">
+                            <tr>
+                                <th class="text-start py-3 px-4">Features</th>
+                                <th class="py-3">299 Plan</th>
+                                <th class="py-3 bg-primary text-white border-primary">479 Plan (Popular)</th>
+                                <th class="py-3">2999 Plan (Annual)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-start px-4 fw-semibold">Validity</td>
+                                <td>28 Days</td>
+                                <td class="bg-primary bg-opacity-10 fw-bold">56 Days</td>
+                                <td>365 Days</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start px-4 fw-semibold">Data Allowance</td>
+                                <td>1.5 GB/Day</td>
+                                <td class="bg-primary bg-opacity-10 fw-bold">2 GB/Day</td>
+                                <td>2.5 GB/Day</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start px-4 fw-semibold">Voice Calls</td>
+                                <td>Unlimited</td>
+                                <td class="bg-primary bg-opacity-10 fw-bold">Unlimited</td>
+                                <td>Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start px-4 fw-semibold">SMS</td>
+                                <td>100/Day</td>
+                                <td class="bg-primary bg-opacity-10 fw-bold">100/Day</td>
+                                <td>100/Day</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start px-4 fw-semibold">OTT Benefits</td>
+                                <td>None</td>
+                                <td class="bg-primary bg-opacity-10 fw-bold text-primary-custom">Disney+ Hotstar</td>
+                                <td class="text-primary-custom">Prime Video</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><a href="recharge.html" class="btn btn-outline-custom btn-sm">Buy</a></td>
+                                <td class="bg-primary bg-opacity-10"><a href="recharge.html" class="btn btn-primary-custom btn-sm">Buy Now</a></td>
+                                <td><a href="recharge.html" class="btn btn-outline-custom btn-sm">Buy</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+</main>
 
                 <!-- Footer -->
     <footer class="footer-custom pt-5">
@@ -625,11 +903,11 @@
                 <div class="col-lg-2 col-md-6">
                     <h5 class="footer-title">Services</h5>
                     <ul class="list-unstyled">
-                        <li><a href="recharge.html" class="text-white-50 text-decoration-none footer-link">Prepaid Recharge</a></li>
-                        <li><a href="plans.html" class="text-white-50 text-decoration-none footer-link">Postpaid Bill</a></li>
-                        <li><a href="broadband.html" class="text-white-50 text-decoration-none footer-link">Fiber Broadband</a></li>
-                        <li><a href="business.html" class="text-white-50 text-decoration-none footer-link">Enterprise Solutions</a></li>
-                        <li><a href="#" class="text-white-50 text-decoration-none footer-link">International Roaming</a></li>
+                        <li><a href="404.html" class="text-white-50 text-decoration-none footer-link">Prepaid Recharge</a></li>
+                        <li><a href="404.html" class="text-white-50 text-decoration-none footer-link">Postpaid Bill</a></li>
+                        <li><a href="404.html" class="text-white-50 text-decoration-none footer-link">Fiber Broadband</a></li>
+                        <li><a href="404.html" class="text-white-50 text-decoration-none footer-link">Enterprise Solutions</a></li>
+                        <li><a href="404.html" class="text-white-50 text-decoration-none footer-link">International Roaming</a></li>
                     </ul>
                 </div>
                 
@@ -837,6 +1115,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 

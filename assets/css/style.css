@@ -160,24 +160,25 @@ header {
 
 /* Navbar */
 .navbar-custom {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-  padding: 15px 0;
-  background: #ffffff;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  transition: all 0.4s ease;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030;
+    padding: 10px 0;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
 }
 
 .navbar-custom.scrolled {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 body.no-scroll {
@@ -194,25 +195,27 @@ body.no-scroll {
 }
 
 .nav-link-custom {
-  font-weight: 500;
-  color: var(--secondary) !important;
-  margin: 0 5px;
-  padding: 8px 18px !important;
-  border-radius: 50px;
-  border: 2px solid transparent;
-  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-weight: 500;
+    color: #4b5563 !important;
+    margin: 0 4px;
+    padding: 8px 16px !important;
+    border-radius: 50px;
+    background: transparent;
+    transition: all 0.3s ease;
 }
 
 .nav-link-custom:hover {
-  color: var(--primary) !important;
-  border-color: rgba(227, 6, 19, 0.3);
+    color: var(--primary) !important;
+    background-color: rgba(227, 6, 19, 0.08);
+    transform: translateY(-1px);
 }
 
 .nav-link-custom.active {
-  color: var(--primary) !important;
-  font-weight: 700;
-  border-color: var(--primary);
-  background-color: transparent;
+    color: white !important;
+    font-weight: 500;
+    background: var(--primary-gradient);
+    box-shadow: 0 4px 10px rgba(227, 6, 19, 0.3);
+    border-color: transparent;
 }
 
 /* Sections */
@@ -666,35 +669,30 @@ body.no-scroll {
     .navbar-collapse {
         position: fixed;
         top: 0;
-        left: 0;
+        left: 100%;
         width: 100vw;
         height: 100dvh;
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         z-index: 1040;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        padding: 60px 1rem 1rem; /* Reduced padding to fit everything */
-        overflow-y: auto;
-        overflow-x: hidden;
         border-radius: 0;
-        box-shadow: none;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
     }
     
     /* Bootstrap overrides for absolute overlay */
     .navbar-collapse.collapsing {
-        transition: opacity 0.3s ease, visibility 0.3s ease;
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
         display: flex !important;
-        opacity: 0;
-        visibility: hidden;
+        transform: translateX(0);
     }
     .navbar-collapse.collapse.show {
         display: flex !important;
-        opacity: 1;
-        visibility: visible;
+        transform: translateX(-100%);
     }
 
     body.no-scroll {
@@ -1122,3 +1120,34 @@ img:not(.navbar-brand img) {
     animation-delay: 2s;
 }
 
+
+.navbar-custom .btn-outline-custom {
+    color: var(--primary) !important;
+    background: transparent;
+    border: 1.5px solid var(--primary);
+    font-weight: 600;
+    padding: 8px 24px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+.navbar-custom .btn-outline-custom:hover {
+    background: var(--primary);
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(227, 6, 19, 0.2);
+}
+
+.navbar-custom .btn-primary-custom {
+    background: var(--primary-gradient);
+    color: white !important;
+    border: none;
+    font-weight: 600;
+    padding: 8px 24px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(227, 6, 19, 0.3);
+}
+.navbar-custom .btn-primary-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(227, 6, 19, 0.4);
+}
