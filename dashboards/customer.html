@@ -21,14 +21,26 @@
     <aside id="sidebar" class="sidebar">
         <div class="sidebar-header d-flex align-items-center justify-content-between">
             <a class="navbar-brand text-white fw-bold m-0 d-lg-none" href="../index.html">
-                <img src="../redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top">
+                <img loading="lazy" src="../redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top">
             </a>
             <button class="btn btn-sm btn-link text-white d-lg-none p-0" id="sidebarCloseBtn"><i class="fa-solid fa-xmark fs-4"></i></button>
         </div>
         
         <div class="p-4 border-bottom border-secondary border-opacity-25">
             <div class="d-flex align-items-center gap-3">
-                <img src="../assets/images/avatar.png" alt="Profile" class="rounded-circle" style="width: 45px; height: 45px; object-fit: cover;">
+                    <button class="btn btn-light rounded-circle shadow-sm" id="darkModeToggle" title="Toggle Dark Mode" style="width:40px;height:40px"><i class="fa-solid fa-moon"></i></button>
+                    <div class="dropdown">
+                        <button class="btn btn-light rounded-circle shadow-sm position-relative" data-bs-toggle="dropdown" style="width:40px;height:40px">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"><span class="visually-hidden">New alerts</span></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                            <li><h6 class="dropdown-header">Notifications</h6></li>
+                            <li><a class="dropdown-item small" href="#">New ticket assigned to you.</a></li>
+                            <li><a class="dropdown-item small" href="#">System update scheduled.</a></li>
+                        </ul>
+                    </div>
+                <img loading="lazy" src="../assets/images/avatar.webp" alt="Profile" class="rounded-circle" style="width: 45px; height: 45px; object-fit: cover;">
                 <div>
                     <h6 class="mb-0 fw-bold" id="sidebarUserName">User</h6>
                     <small class="text-white-50" id="sidebarUserEmail">user@example.com</small>
@@ -72,7 +84,7 @@
                 <button class="btn btn-light me-3 shadow-sm" id="sidebarToggle">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <a href="../index.html"><img src="../redlogo.webp" alt="Stackly Logo" height="28" class="d-inline-block align-text-top"></a>
+                <a href="../index.html"><img loading="lazy" src="../redlogo.webp" alt="Stackly Logo" height="28" class="d-inline-block align-text-top"></a>
             </div>
             
             <!-- Notification Panel Pulse -->
@@ -224,7 +236,7 @@
                     <div class="stat-card">
                         <h4 class="fw-bold mb-4">Recharge History</h4>
                         <div class="table-responsive">
-                            <table class="table table-custom align-middle">
+                            <div class="table-responsive"><table class="table table-custom align-middle">
                                 <thead>
                                     <tr>
                                         <th>Date</th>
@@ -257,7 +269,7 @@
                                         <td class="text-muted">TXN89230091</td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table></div>
                         </div>
                     </div>
                 </div>
@@ -292,16 +304,18 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <h6 class="fw-bold text-primary-custom mb-3">Profile Information</h6>
-                                <form>
+                                <form class="needs-validation" novalidate>
                                     <div class="mb-3">
                                         <label class="form-label small text-muted">Full Name</label>
-                                        <input type="text" class="form-control" value="Swetha M">
+                                        <input type="text" class="form-control" value="Swetha M" required minlength="3" pattern="^[A-Za-z\s]+$">
+                                        <div class="invalid-feedback">Must be at least 3 letters (only alphabets and spaces).</div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label small text-muted">Email Address</label>
-                                        <input type="email" class="form-control" value="swetha@example.com">
+                                        <input type="email" class="form-control" value="swetha@example.com" required>
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
                                     </div>
-                                    <button type="button" class="btn btn-primary-custom btn-sm">Save Changes</button>
+                                    <button type="submit" class="btn btn-primary-custom btn-sm" data-custom-submit="true">Save Changes</button>
                                 </form>
                             </div>
                             <div class="col-md-6 mb-4">
@@ -325,20 +339,23 @@
                         <div class="col-md-5">
                             <div class="stat-card h-100">
                                 <h5 class="fw-bold mb-4">Create New Ticket</h5>
-                                <form>
+                                <form class="needs-validation" novalidate>
                                     <div class="mb-3">
                                         <label class="form-label small text-muted">Issue Category</label>
-                                        <select class="form-select">
+                                        <select class="form-select" required>
+                                            <option value="" disabled>Select Category</option>
                                             <option>Network/Connectivity</option>
                                             <option>Billing Issue</option>
                                             <option>Plan Upgrade</option>
                                         </select>
+                                        <div class="invalid-feedback">Please select a category.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label small text-muted">Description</label>
-                                        <textarea class="form-control" rows="4" placeholder="Describe your issue..."></textarea>
+                                        <textarea class="form-control" rows="4" placeholder="Describe your issue..." required minlength="10"></textarea>
+                                        <div class="invalid-feedback">Please provide a description (min 10 characters).</div>
                                     </div>
-                                    <button type="button" class="btn btn-primary-custom w-100">Submit Ticket</button>
+                                    <button type="submit" class="btn btn-primary-custom w-100" data-custom-submit="true">Submit Ticket</button>
                                 </form>
                             </div>
                         </div>
@@ -372,6 +389,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/dashboard.min.js?v=1.1"></script>
+    <script src="../assets/js/forms.js"></script>
     
     <script>
         // Custom Tab Switcher
@@ -435,5 +453,11 @@
             if (userEmail) document.getElementById('sidebarUserEmail').textContent = userEmail;
         })();
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </body>
 </html>
+
+
+
+

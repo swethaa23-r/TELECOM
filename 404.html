@@ -15,7 +15,8 @@
         .error-bg {
             background: url('https://www.transparenttextures.com/patterns/connected.png'), var(--dark-gradient);
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             position: relative;
         }
         .error-card {
@@ -111,7 +112,7 @@
             
             <div class="mt-4">
                 <a class="text-white-50 text-decoration-none hover-text-white d-inline-flex align-items-center" href="index.html">
-                    <img src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"> <span class="fw-bold">Stackly Telecom</span>
+                    <img loading="lazy" src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"> <span class="fw-bold">Stackly Telecom</span>
                 </a>
             </div>
         </div>
@@ -128,8 +129,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="assets/js/main.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </body>
 </html>
+
+
 
 
 

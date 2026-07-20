@@ -113,7 +113,7 @@
                 <nav class="navbar navbar-expand-xl navbar-custom">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"></a>
+                    <img loading="lazy" src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -144,11 +144,14 @@
                 <h1 class="display-4 fw-bold mb-3" data-aos="fade-down">How can we help you?</h1>
                 <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
                     <div class="col-lg-6">
-                        <div class="input-group input-group-lg shadow-lg rounded-pill overflow-hidden bg-white p-1">
-                            <span class="input-group-text bg-transparent border-0 text-secondary ps-4"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <input type="text" id="faqSearchInput" class="form-control border-0 shadow-none" placeholder="Search for answers, e.g. 'How to activate roaming'">
-                            <button class="btn btn-primary-custom rounded-pill px-4" onclick="window.location.href='404.html'">Search</button>
-                        </div>
+                        <form class="needs-validation m-0 w-100" novalidate action="404.html">
+                            <div class="input-group input-group-lg shadow-lg rounded-pill overflow-hidden bg-white p-1 position-relative">
+                                <span class="input-group-text bg-transparent border-0 text-secondary ps-4"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <input type="text" id="faqSearchInput" class="form-control border-0 shadow-none" placeholder="Search for answers, e.g. 'How to activate roaming'" required minlength="3">
+                                <button type="submit" class="btn btn-primary-custom rounded-pill px-4">Search</button>
+                                <div class="invalid-feedback position-absolute w-100 text-center" style="bottom: -25px; left: 0;">Please enter at least 3 characters.</div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -217,7 +220,8 @@
                             <form action="404.html" class="needs-validation" novalidate>
                                 <div class="mb-3">
                                     <label class="form-label small fw-bold">Mobile / Landline Number</label>
-                                    <input type="tel" class="form-control" required>
+                                    <input type="tel" class="form-control" pattern="[0-9]{10}" required>
+                                    <div class="invalid-feedback">Please enter a valid 10-digit number.</div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label small fw-bold">Category</label>
@@ -228,10 +232,12 @@
                                         <option>SIM Activation</option>
                                         <option>Value Added Services</option>
                                     </select>
+                                    <div class="invalid-feedback">Please select a category.</div>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label small fw-bold">Description</label>
-                                    <textarea class="form-control" rows="4" placeholder="Describe your issue..." required></textarea>
+                                    <textarea class="form-control" rows="4" placeholder="Describe your issue..." required minlength="10"></textarea>
+                                    <div class="invalid-feedback">Please provide a description (min 10 characters).</div>
                                 </div>
                                 <button type="submit" class="btn btn-primary-custom w-100 ripple">Submit Complaint</button>
                             </form>
@@ -247,9 +253,10 @@
                                 <p class="small text-muted mb-3">Enter your complaint number to check status.</p>
                                 <form action="404.html" class="needs-validation mb-4" novalidate>
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light" placeholder="e.g. SR123456789" required>
+                                        <input type="text" class="form-control bg-light" placeholder="e.g. SR123456789" required minlength="5">
                                         <button class="btn btn-dark px-4" type="submit">Track</button>
                                     </div>
+                                    <div class="invalid-feedback mt-2">Please enter a valid request number.</div>
                                 </form>
                             </div>
                             
@@ -457,7 +464,7 @@
             <div class="row g-4 mb-5">
                 <div class="col-lg-3 col-md-6">
                     <a class="navbar-brand text-white mb-4 d-inline-block" href="index.html">
-                        <img src="redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top"></a>
+                        <img loading="lazy" src="redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top"></a>
                     <p class="text-white-50 mb-4 pe-lg-5">Empowering India with next-generation digital connectivity. High-speed 5G, reliable fiber, and enterprise solutions for everyone.</p>
                     <div class="d-flex gap-3">
                         <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-twitter"></i></a>
@@ -533,6 +540,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.min.js"></script>
+    <script src="assets/js/forms.js"></script>
     <script src="assets/js/animations.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -613,8 +621,13 @@
         }
     });
 </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </body>
 </html>
+
+
+
 
 
 

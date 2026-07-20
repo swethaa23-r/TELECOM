@@ -19,14 +19,26 @@
     <aside id="sidebar" class="sidebar">
         <div class="sidebar-header d-flex align-items-center justify-content-between">
             <a class="navbar-brand text-white fw-bold m-0 d-lg-none" href="../index.html">
-                <img src="../redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top">
+                <img loading="lazy" src="../redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top">
             </a>
             <button class="btn btn-sm btn-link text-white d-lg-none p-0" id="sidebarCloseBtn"><i class="fa-solid fa-xmark fs-4"></i></button>
         </div>
         
         <div class="p-4 border-bottom border-secondary border-opacity-25">
             <div class="d-flex align-items-center gap-3">
-                <img src="../assets/images/avatar.png" alt="Profile" class="rounded-circle" style="width: 45px; height: 45px; object-fit: cover;">
+                    <button class="btn btn-light rounded-circle shadow-sm" id="darkModeToggle" title="Toggle Dark Mode" style="width:40px;height:40px"><i class="fa-solid fa-moon"></i></button>
+                    <div class="dropdown">
+                        <button class="btn btn-light rounded-circle shadow-sm position-relative" data-bs-toggle="dropdown" style="width:40px;height:40px">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"><span class="visually-hidden">New alerts</span></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                            <li><h6 class="dropdown-header">Notifications</h6></li>
+                            <li><a class="dropdown-item small" href="#">New ticket assigned to you.</a></li>
+                            <li><a class="dropdown-item small" href="#">System update scheduled.</a></li>
+                        </ul>
+                    </div>
+                <img loading="lazy" src="../assets/images/avatar.webp" alt="Profile" class="rounded-circle" style="width: 45px; height: 45px; object-fit: cover;">
                 <div>
                     <h6 class="mb-0 fw-bold" id="sidebarUserName">Admin</h6>
                     <small class="text-white-50" id="sidebarUserEmail">admin@stackly.com</small>
@@ -61,10 +73,22 @@
         <header class="dash-topbar">
             <div class="d-flex align-items-center">
                 <button class="btn btn-light me-3 shadow-sm" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
-                <a href="../index.html"><img src="../redlogo.webp" alt="Stackly Logo" height="28" class="d-inline-block align-text-top"></a>
+                <a href="../index.html"><img loading="lazy" src="../redlogo.webp" alt="Stackly Logo" height="28" class="d-inline-block align-text-top"></a>
             </div>
             
             <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-light rounded-circle shadow-sm" id="darkModeToggle" title="Toggle Dark Mode" style="width:40px;height:40px"><i class="fa-solid fa-moon"></i></button>
+                    <div class="dropdown">
+                        <button class="btn btn-light rounded-circle shadow-sm position-relative" data-bs-toggle="dropdown" style="width:40px;height:40px">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"><span class="visually-hidden">New alerts</span></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                            <li><h6 class="dropdown-header">Notifications</h6></li>
+                            <li><a class="dropdown-item small" href="#">New ticket assigned to you.</a></li>
+                            <li><a class="dropdown-item small" href="#">System update scheduled.</a></li>
+                        </ul>
+                    </div>
                 <div class="input-group d-none d-md-flex">
                     <span class="input-group-text bg-light border-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
                     <input type="text" class="form-control bg-light border-0" placeholder="Search...">
@@ -166,7 +190,7 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-custom">
+                            <div class="table-responsive"><table class="table table-custom">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -192,7 +216,7 @@
                                         <td><button class="btn btn-sm btn-light">Manage</button></td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table></div>
                         </div>
                     </div>
                 </div>
@@ -229,10 +253,11 @@
                         <div class="col-md-6">
                             <div class="stat-card h-100">
                                 <h5 class="fw-bold mb-4">Platform Configuration</h5>
-                                <form>
+                                <form class="needs-validation" novalidate>
                                     <div class="mb-3">
                                         <label class="form-label small text-muted">Site Banner Message</label>
-                                        <input type="text" class="form-control" value="Welcome to the new Stackly 5G network!">
+                                        <input type="text" class="form-control" value="Welcome to the new Stackly 5G network!" required minlength="5">
+                                        <div class="invalid-feedback">Banner message must be at least 5 characters.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label small text-muted">Maintenance Mode</label>
@@ -241,7 +266,7 @@
                                             <label class="form-check-label" for="maintenanceToggle">Enable Maintenance Mode</label>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-primary-custom btn-sm">Save Config</button>
+                                    <button type="submit" class="btn btn-primary-custom btn-sm" data-custom-submit="true">Save Config</button>
                                 </form>
                             </div>
                         </div>
@@ -275,6 +300,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/dashboard.min.js?v=1.1"></script>
+    <script src="../assets/js/forms.js"></script>
     
     <script>
         document.querySelectorAll('button[data-custom-tab="true"]').forEach(btn => {
@@ -336,5 +362,12 @@
             if (userEmail) document.getElementById('sidebarUserEmail').textContent = userEmail;
         })();
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </body>
 </html>
+
+
+
+
+

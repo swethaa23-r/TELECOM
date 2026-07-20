@@ -21,7 +21,7 @@
                 <nav class="navbar navbar-expand-xl navbar-custom">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"></a>
+                    <img loading="lazy" src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -257,23 +257,6 @@
             </div>
         </section>
         <section id="coverage" class="section-padding bg-light-gray">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                        <h2 class="section-title">Check Availability in Your Area</h2>
-                        <p class="section-subtitle mb-4">We are constantly expanding our fiber network. Enter your location details below to see if Stackly Fiber is available at your address.</p>
-                                                <div class="premium-card p-4 hover-lift hover-tilt" id="coverageCard">
-                            <form id="coverageForm" class="row g-3 needs-validation" novalidate>
-                                <div class="col-md-8">
-                                    <input type="text" id="pincodeInput" class="form-control form-control-lg bg-light border-0" placeholder="Enter 6-digit Pincode" pattern="[0-9]{6}" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" id="btnCoverage" class="btn btn-primary-custom btn-lg w-100 h-100">Check</button>
-                                </div>
-                            </form>
-                            <div id="coverageSuccess" class="d-none text-center py-3 mt-3 border-top">
-                                <i class="fa-solid fa-circle-check text-success fs-1 mb-2"></i>
-                                <h5 class="fw-bold text-dark-navy">Great news!</h5>
                                 <p class="text-success fw-bold mb-0">Stackly Fiber is available in your area.</p>
                                 <a href="#plans" class="btn btn-sm btn-outline-custom mt-3 rounded-pill px-4">View Plans</a>
                             </div>
@@ -371,7 +354,7 @@
             <div class="row g-4 mb-5">
                 <div class="col-lg-3 col-md-6">
                     <a class="navbar-brand text-white mb-4 d-inline-block" href="index.html">
-                        <img src="redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top"></a>
+                        <img loading="lazy" src="redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top"></a>
                     <p class="text-white-50 mb-4 pe-lg-5">Empowering India with next-generation digital connectivity. High-speed 5G, reliable fiber, and enterprise solutions for everyone.</p>
                     <div class="d-flex gap-3">
                         <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-twitter"></i></a>
@@ -476,9 +459,15 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/forms.js"></script>
     <script src="assets/js/animations.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </body>
 </html>
+
+
+
 
 
 

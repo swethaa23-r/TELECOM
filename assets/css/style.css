@@ -1,4 +1,5 @@
 html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; width: 100%; position: relative; }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
@@ -12,10 +13,10 @@ html { scroll-behavior: smooth; }
   --dark-gradient: linear-gradient(135deg, #111827, #1f2937);
 
   /* Shadows */
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-red: 0 10px 25px -5px rgba(227, 6, 19, 0.4);
+  --shadow-sm: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 30px 60px -15px rgba(0, 0, 0, 0.12);
+  --shadow-red: 0 20px 40px -10px rgba(227, 6, 19, 0.35);
 
   /* Borders & Radius */
   --radius-md: 12px;
@@ -348,7 +349,7 @@ body.no-scroll {
 
 /* Global Premium Button Overrides */
 .btn-primary-custom, .btn-outline-custom, .btn {
-  border-radius: 50px !important;
+  border-radius: 50px !importantvar(--radius-pill);
   position: relative;
   overflow: hidden;
   min-height: 44px;
@@ -610,8 +611,7 @@ body.no-scroll {
         padding: 60px 0 !important;
     }
     .hero-section {
-        padding-top: 60px !important;
-        padding-bottom: 40px !important;
+        padding-top: 20px !important; padding-bottom: 20px !important;
     }
     /* Prevent horizontal scroll */
     body {
@@ -743,7 +743,7 @@ body.no-scroll {
     .nav-link-custom.active {
         border-color: transparent !important;
         background-color: rgba(227, 6, 19, 0.05); /* very light red */
-        border-radius: 8px;
+        border-radius: 8pxvar(--radius-pill);
         padding: 10px 18px !important;
     }
 
@@ -839,7 +839,7 @@ body.no-scroll {
     .hero-title {
         white-space: normal !important;
         text-align: left;
-        border-radius: 15px !important; /* switch from pill to rounded rectangle if it wraps */
+        border-radius: 15px !importantvar(--radius-pill); /* switch from pill to rounded rectangle if it wraps */
         height: auto;
     }
 }
@@ -1062,3 +1062,63 @@ img:not(.navbar-brand img) {
         font-size: 2rem;
     }
 }
+
+/* Glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Gradient Background Animation */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.bg-primary-gradient {
+    background-size: 200% 200% !important;
+    animation: gradientMove 5s ease infinite;
+}
+
+/* Sticky Navbar Blur */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.85) !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+
+/* 3D Float Animation */
+@keyframes float3d {
+    0% {
+        transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: translate3d(0, -20px, 10px) rotateX(5deg) rotateY(-5deg);
+        box-shadow: 0 25px 40px rgba(0,0,0,0.15);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+    }
+}
+
+.float-3d {
+    animation: float3d 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+.float-3d-delay-1 {
+    animation-delay: 1s;
+}
+
+.float-3d-delay-2 {
+    animation-delay: 2s;
+}
+

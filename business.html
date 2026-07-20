@@ -21,7 +21,7 @@
                 <nav class="navbar navbar-expand-xl navbar-custom">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"></a>
+                    <img loading="lazy" src="redlogo.webp" alt="Stackly Logo" height="30" width="109" class="me-2 d-inline-block align-text-top"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -302,20 +302,24 @@
                                 <div class="mb-3">
                                     <label class="form-label small fw-bold">Company Name</label>
                                     <input type="text" class="form-control" placeholder="e.g. Acme Corp" required>
+                                    <div class="invalid-feedback">Company name is required.</div>
                                 </div>
                                 <div class="row g-3 mb-3">
                                     <div class="col-md-6">
                                         <label class="form-label small fw-bold">Contact Person</label>
-                                        <input type="text" class="form-control" placeholder="e.g. John Doe" required>
+                                        <input type="text" class="form-control" placeholder="e.g. John Doe" required minlength="3" pattern="^[A-Za-z\s]+$">
+                                        <div class="invalid-feedback">Must be at least 3 letters (only alphabets and spaces).</div>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label small fw-bold">Mobile Number</label>
                                         <input type="tel" class="form-control" pattern="[0-9]{10}" placeholder="e.g. 9876543210" required>
+                                        <div class="invalid-feedback">Please enter a valid 10-digit number.</div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label small fw-bold">Official Email</label>
                                     <input type="email" class="form-control" placeholder="john@acme.com" required>
+                                    <div class="invalid-feedback">Please enter a valid email address.</div>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label small fw-bold">Interested In</label>
@@ -327,6 +331,7 @@
                                         <option>MPLS VPN</option>
                                         <option>Other</option>
                                     </select>
+                                    <div class="invalid-feedback">Please select a solution.</div>
                                 </div>
                                 <button type="submit" class="btn btn-primary-custom w-100 ripple">Submit Request</button>
                             </form>
@@ -344,7 +349,7 @@
             <div class="row g-4 mb-5">
                 <div class="col-lg-3 col-md-6">
                     <a class="navbar-brand text-white mb-4 d-inline-block" href="index.html">
-                        <img src="redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top"></a>
+                        <img loading="lazy" src="redlogo.webp" alt="Stackly Logo" height="24" class="me-2 d-inline-block align-text-top"></a>
                     <p class="text-white-50 mb-4 pe-lg-5">Empowering India with next-generation digital connectivity. High-speed 5G, reliable fiber, and enterprise solutions for everyone.</p>
                     <div class="d-flex gap-3">
                         <a href="404.html" class="btn btn-outline-light rounded-circle p-0 d-flex justify-content-center align-items-center hover-lift" style="width: 40px; height: 40px;"><i class="fa-brands fa-twitter"></i></a>
@@ -421,6 +426,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.min.js"></script>
+    <script src="assets/js/forms.js"></script>
     <script src="assets/js/animations.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -451,8 +457,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script .min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </body>
 </html>
+
+
+
 
 
 
